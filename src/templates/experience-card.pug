@@ -1,0 +1,62 @@
+-
+  const EXP_DATA = [
+    //- {
+    //-   positionName: "Gen Sec. & Academic Head",
+    //-   companyName: "Teach Code for Good, Manipal",
+    //-   companyLink: "https://scontent.fbom2-1.fna.fbcdn.net/v/t1.0-9/14088457_1668755420108774_6204210233088154103_n.jpg?_nc_cat=104&_nc_oc=AQmD1yOAmWsn2m0SjJ-_u47pk5Hh68UQc4INocg62ym13GUDSlCTM1fgcfEqB3sEFsA&_nc_ht=scontent.fbom2-1.fna&oh=66c30d83bac762f9c83ea31d460854b6&oe=5DA232A6",
+    //-   fromMonth: "November 2018",
+    //-   isPresent: true,
+    //-   workDesc: [
+    //-       "Reworked the academic course plan for teaching school students to be more about computers and programming.",
+    //-       "Designed, developed and set up the official website for the organization."
+    //-   ]
+    //- },
+    {
+      positionName: "Summer Intern, DCES",
+      companyName: "Schneider Electric, Bengaluru",
+      companyLink: "http://files.smartbim.com.s3.amazonaws.com/objects/logos/bpmlogo/SchneiderElectric_Logo.jpg",
+      fromMonth: "May 2019",
+      toMonth: "July 2019",
+      isPresent: false,
+      workDesc: [
+          "Prepared a proof of concept to migrate existing services to a bare-metal Kubernetes cluster.",
+          "Implemented route-wise load balancing and monitoring for each service."
+      ]
+    },
+    {
+      positionName: "Summer Intern",
+      companyName: "Hindustan Petroleum, Mumbai",
+      companyLink: "https://static-s.aa-cdn.net/img/gp/20600001746794/WJfpVugeu7TUUS3EN6ZEC50rVSGqCW2xd6vyAdmGgo16kRJmKNZDz1UGp17vV9QHJJk=w300?v=1",
+      fromMonth: "May 2018",
+      toMonth: "June 2018",
+      isPresent: false,
+      workDesc: [
+          "Worked on a full-stack Java Project, with JSP and Servlets connected to a MySQL database.",
+          "Supported import and export of data using .XLSX files."
+      ]
+    },
+  ];
+  
+  let delay = 0
+
+mixin create-experience-card(exp)
+  - const finalDate = `${exp.isPresent ? 'Present' : exp.toMonth}`
+  .column.is-two-fifths
+    .card.use-poppins.is-unselectable(data-aos='fade-left', data-aos-anchor-placement='center-bottom', data-aos-delay=`${ delay }`)
+      .card-content
+        .media
+          .media-left
+            figure.image.is-48x48
+              img(src=`${ exp.companyLink }` alt='Company Logo')
+          .media-content
+            p.title.is-4.has-text-black #{ exp.positionName }
+            p.subtitle.is-6.has-text-grey.is-italic #{ exp.companyName }
+        .content
+          each line in exp.workDesc
+            span #{ line } <br/><br/>
+      footer.card-footer
+          p.card-footer-item.has-text-link From #{ exp.fromMonth } to #{ finalDate }
+
+each exp in EXP_DATA
+  +create-experience-card(exp)
+  - delay += 150
