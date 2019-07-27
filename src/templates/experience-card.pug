@@ -49,8 +49,8 @@ mixin create-experience-card(exp)
             figure.image.is-48x48
               img(src=`${ exp.companyLink }` alt='Company Logo')
           .media-content
-            p.title.is-4.has-text-black #{ exp.positionName }
-            p.subtitle.is-6.has-text-grey.is-italic #{ exp.companyName }
+            p.title.has-text-black #{ exp.positionName }
+            p.subtitle.has-text-grey.is-italic #{ exp.companyName }
         .content
           each line in exp.workDesc
             span #{ line } <br/><br/>
