@@ -84,6 +84,7 @@ figure {
 #education-section {
     .columns {
         @include below(md) {
+            display: flex;
             flex-direction: column-reverse;
         }
     }
