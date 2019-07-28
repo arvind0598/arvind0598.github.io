@@ -2,7 +2,7 @@
 import './styles/index.scss';
 // import 'aos/dist/aos.css';
 // import AOS from 'aos';
-import Chart from 'chart.js';
+// import Chart from 'chart.js';
 
 /**
  * ELEMENT REFERENCES
