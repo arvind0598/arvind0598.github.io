@@ -37,12 +37,12 @@
     },
   ];
   
-  let delay = 0
+  let expDelay = 0
 
 mixin create-experience-card(exp)
   - const finalDate = `${exp.isPresent ? 'Present' : exp.toMonth}`
   .column.is-two-fifths
-    .card.use-poppins.is-unselectable(data-aos='fade-left', data-aos-anchor-placement='center-bottom', data-aos-delay=`${ delay }`)
+    .card.use-poppins.is-unselectable(data-aos='fade-left', data-aos-anchor-placement='center-bottom', data-aos-delay=`${ expDelay }`)
       .card-content
         .media
           .media-left
@@ -59,4 +59,4 @@ mixin create-experience-card(exp)
 
 each exp in EXP_DATA
   +create-experience-card(exp)
-  - delay += 150
+  - expDelay += 150
