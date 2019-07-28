@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 import './styles/index.scss';
-import 'aos/dist/aos.css';
-import AOS from 'aos';
+// import 'aos/dist/aos.css';
+// import AOS from 'aos';
 import Chart from 'chart.js';
 
 /**

@@ -3,6 +3,7 @@ const CSSNano = require('cssnano');
 const autoprefixer = require('autoprefixer');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 const MiniCSSExtractPlugin = require('mini-css-extract-plugin');
+const Visualizer = require('webpack-visualizer-plugin');
 
 const IS_DEV = process.env.NODE_ENV !== 'production';
 
@@ -133,6 +134,7 @@ const webpackConfig = {
   plugins: [
     new HTMLWebpackPlugin(HTMLWebpackPluginConfig),
     new MiniCSSExtractPlugin(MiniCSSExtractPluginConfig),
+    new Visualizer(),
   ],
 };
 
