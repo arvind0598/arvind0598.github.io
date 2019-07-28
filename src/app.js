@@ -39,6 +39,50 @@ const deriveCGPA = (gpaArr) => {
 const CGPA_DATA = deriveCGPA(GPA_DATA);
 
 /**
+ * CHART CONFIGURATION
+ */
+
+let chartReference = null;
+
+const gpaChartConfig = {
+  type: 'line',
+  data: {
+    labels: SEM_DATA,
+    datasets: [
+      {
+        label: 'GPA',
+        data: GPA_DATA,
+        backgroundColor: 'rgba(74,20,140,0.2)',
+        borderColor: 'rgba(18,0,94,1)',
+      },
+      {
+        label: 'CGPA',
+        data: CGPA_DATA,
+        backgroundColor: 'rgba(255,23,68,0.4)',
+        borderColor: 'rgba(255,23,68,1)',
+      },
+    ],
+  },
+  options: {
+    legend: {
+      display: true,
+      position: 'bottom',
+    },
+    layout: {
+      padding: 30,
+    },
+    scales: {
+      yAxes: [{
+        ticks: {
+          // min: 7.0,
+          // max: 10.0,
+        },
+      }],
+    },
+  },
+};
+
+/**
  * EVENT LISTENERS
  */
 
@@ -54,51 +98,33 @@ const changePrimaryColor = () => {
   currColor = (currColor + 1) % COOL_COLORS.length;
 };
 
-const createGPAChart = () => (
-  new Chart(gpaChartContext, {
-    type: 'line',
-    data: {
-      labels: SEM_DATA,
-      datasets: [
-        {
-          label: 'GPA',
-          data: GPA_DATA,
-          backgroundColor: 'rgba(74,20,140,0.2)',
-          borderColor: 'rgba(18,0,94,1)',
-        },
-        {
-          label: 'CGPA',
-          data: CGPA_DATA,
-          backgroundColor: 'rgba(255,23,68,0.4)',
-          borderColor: 'rgba(255,23,68,1)',
-        },
-      ],
-    },
-    options: {
-      legend: {
-        display: true,
-        position: 'bottom',
-      },
-      layout: {
-        padding: 30,
-      },
-      scales: {
-        yAxes: [{
-          ticks: {
-            // min: 7.0,
-            // max: 10.0,
-          },
-        }],
-      },
-    },
-  })
-);
+// NOTE: AOS has a bug which prevents out for custom events from firing
+// Hence until fixed will simply fire based on toggle
+// https://github.com/michalsnik/aos/issues/473
+
+let isChartVisible = false;
+
+const createGPAChart = () => {
+  chartReference = new Chart(gpaChartContext, gpaChartConfig);
+};
+
+const destroyGPAChart = () => {
+  chartReference.destroy();
+};
+
+const doChartAnimation = () => {
+  if (isChartVisible) destroyGPAChart();
+  else createGPAChart();
+  isChartVisible = !isChartVisible;
+};
 
 window.onload = () => {
   // document.addEventListener('scroll', updateProgressBar);
-  primaryColorElements.forEach(node => node.addEventListener('dblclick', changePrimaryColor));
+  // primaryColorElements.forEach(node => node.addEventListener('dblclick', changePrimaryColor));
   AOS.init();
   Chart.defaults.global.animation.easing = 'easeInOutSine';
   Chart.defaults.global.animation.duration = 1500;
-  document.addEventListener('aos:in:animate-gpa-chart', createGPAChart);
+  // document.addEventListener('aos:in:animate-gpa-chart', createGPAChart);
+  // document.addEventListener('aos:out:animate-gpa-chart', destroyGPAChart);
+  document.addEventListener('aos:in:animate-gpa-chart', doChartAnimation);
 };
