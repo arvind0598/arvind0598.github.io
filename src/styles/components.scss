@@ -30,7 +30,7 @@ figure {
     }
 }
 
-#experience-columns {
+#experience-columns, #skills-columns {
     @include above(md) {
         overflow-x: auto;
         .column {
