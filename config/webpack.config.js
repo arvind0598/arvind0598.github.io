@@ -80,6 +80,18 @@ const sassRule = {
   ],
 };
 
+const imageRule = {
+  test: /\.(png|jpg|gif|jpeg)/,
+  use: [
+    {
+      loader: 'url-loader',
+      options: {
+        limit: 5000,
+      },
+    },
+  ],
+};
+
 /**
  * WEBPACK CONFIGS
  */
@@ -129,6 +141,7 @@ const webpackConfig = {
     rules: [
       pugRule,
       sassRule,
+      imageRule,
     ],
   },
   plugins: [
