@@ -3,7 +3,11 @@ section.hero.is-primary.is-fullheight
     .container.columns
       .column.is-one-quarter.has-text-black.use-poppins.has-text-white-below-md(style='z-index:2')
         h2.is-size-3 Experience
-        p.is-size-5.has-text-weight-light.is-italic (Yes, All of it)
+        p.is-size-5.has-text-weight-light.is-italic (My Internships)
       #experience-columns.column.columns.is-three-quarters.is-vcentered
-        include ../templates/experience-card
+        include ../mixins/experience-card
+        - let expDelay = 0
+        each exp in EXP_DATA
+          +create-experience-card(exp)
+          - expDelay += 150
     .placeholder-background.is-light.is-on-left 

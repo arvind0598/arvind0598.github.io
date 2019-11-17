@@ -1,0 +1,36 @@
+[
+  {
+    "skillName": "Web Development",
+    "sections": [
+      {
+        "sectionName": "Front End",
+        "sectionDesc": "I'm proficient in basic front end development. I've also extensively used Pug and SCSS, and also frameworks like React and Vue."
+      },
+      {
+        "sectionName": "Back End",
+        "sectionDesc": "I mainly write server-side code with NodeJS and Ruby (Sinatra). I've also used Java to write servlets for various projects."
+      },
+      {
+        "sectionName": "Databases",
+        "sectionDesc": "I have worked with MySQL and OracleSQL, and have implemented various triggers, functions and normalized database designs. I also have basic knowledge of MongoDB."
+      }
+    ]
+  },
+  {
+    "skillName": "General Coding & Development",
+    "sections": [
+      {
+        "sectionName": "Competitive Coding",
+        "sectionDesc": "I use standard data structures and algorithms, mainly with languages like C++ with STL, Python and Ruby"
+      },
+      {
+        "sectionName": "Android Apps",
+        "sectionDesc": "Developed for Android using the Android X libraries, including the Room database and Retrofit."
+      },
+      {
+        "sectionName": "Other Tools",
+        "sectionDesc": "Worked heavily with Git, Postman and Webpack. I also frequently use Selenium and BS4 in Python3 to scrape webpages."
+      }
+    ]
+  }
+]

@@ -1,0 +1,11 @@
+mixin create-skills-card(skill)
+  .column
+    .card.use-poppins(data-aos='fade-left', data-aos-anchor-placement='center-bottom', data-aos-delay=skillsDelay)
+      header.card-header
+        p.card-header-title #{ skill.skillName }
+      .card-content
+        .content
+          each section in skill.sections
+            p.title.has-text-dark #{ section.sectionName }
+            p.subtitle.has-text-dark.has-text-weight-light #{ section.sectionDesc }
+            br

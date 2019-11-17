@@ -5,7 +5,11 @@ section.hero.is-primary.is-fullheight
         h2.is-size-3 Skills
         p.is-size-5.has-text-weight-light.is-italic (I'd like to learn more)
       #skills-columns.column.columns.is-three-quarters.is-centered.is-multiline
-        include ../templates/skills-card
+        include ../mixins/skills-card
+        - let skillsDelay = 0;
+        each skill in SKILLS_DATA
+          +create-skills-card(skill)
+          - skillsDelay += 150
     .placeholder-background.is-light.is-on-left 
     
 

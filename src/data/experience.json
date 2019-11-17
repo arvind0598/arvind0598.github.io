@@ -1,0 +1,26 @@
+[
+  {
+    "positionName": "Summer Intern, DCES",
+    "companyName": "Schneider Electric, Bengaluru",
+    "companyLink": "schneider-electric.jpg",
+    "fromMonth": "May 2019",
+    "toMonth": "July 2019",
+    "isPresent": false,
+    "workDesc": [
+      "Prepared a proof of concept to migrate existing services to a bare-metal Kubernetes cluster.",
+      "Implemented route-wise load balancing and monitoring for each service."
+    ]
+  },
+  {
+    "positionName": "Summer Intern",
+    "companyName": "Hindustan Petroleum, Mumbai",
+    "companyLink": "hindustan-petroleum.jpg",
+    "fromMonth": "May 2018",
+    "toMonth": "June 2018",
+    "isPresent": false,
+    "workDesc": [
+      "Worked on a full-stack Java Project, with JSP and Servlets connected to a MySQL database.",
+      "Supported import and export of data using .XLSX files."
+    ]
+  }
+]
