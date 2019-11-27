@@ -46,7 +46,7 @@ const getChartConfig = (SEM_DATA, GPA_DATA, CGPA_DATA) => {
         }],
       },
     },
-  }
+  };
 };
 
 export default getChartConfig;

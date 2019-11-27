@@ -35,6 +35,8 @@ figure {
 }
 
 #experience-columns, #skills-columns {
+    overflow-x: hidden;
+
     @include above(md) {
         overflow-x: auto;
         .column {
