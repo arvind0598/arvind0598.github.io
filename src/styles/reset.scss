@@ -51,7 +51,7 @@ $breakpoints: (
 
 /* RESET BULMA VARIABLES */
 
-$primary: #22A39F;
+$primary: #AF4648;
 $secondary: #FFF;
 $progress-bar-background-color: #FFF;
 $progress-value-background-color: #000;
@@ -60,3 +60,11 @@ $dimensions: 16 24 32 48 64 96 128 256 512;
 
 $footer-background-color: $primary;
 $footer-padding: 2rem 0.75rem 1.5rem;
+
+$navbar-background-color: #2E2B3C;
+$navbar-item-color: #FFF;
+$navbar-item-hover-color: $navbar-background-color;
+$navbar-item-hover-background-color: $navbar-item-color;
+
+$landing-gradient-start-color: $navbar-background-color;
+$landing-gradient-end-color: $primary;
