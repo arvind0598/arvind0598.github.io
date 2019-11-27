@@ -1,7 +1,7 @@
 mixin create-experience-card(exp)
   - const finalDate = `${exp.isPresent ? 'Present' : exp.toMonth}`
   .column.is-two-fifths
-    .card.use-poppins.is-unselectable(data-aos='fade-left', data-aos-anchor-placement='center-bottom', data-aos-delay=`${ expDelay }`)
+    .card.use-poppins.is-unselectable(data-aos='fade-left', data-aos-anchor-placement='center-bottom', data-aos-delay=expDelay)
       .card-content
         .media
           .media-left
