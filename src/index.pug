@@ -1,5 +1,5 @@
 doctype html
-html(lang='en')
+html(lang='en').has-navbar-fixed-top
   head
     meta(charset='utf-8')
     meta(name='author', content='arvind0598')
@@ -8,6 +8,7 @@ html(lang='en')
     link(rel="stylesheet" href="./styles/index.scss")
     title Arvind S
   body
+    include sections/navbar
     include sections/landing
     include sections/about
     include sections/experience

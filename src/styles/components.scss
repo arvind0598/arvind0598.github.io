@@ -1,3 +1,7 @@
+* {
+    scroll-behavior: smooth;
+}
+
 hr.fade-sides { 
     border: 0; 
     height: 1px;
@@ -99,4 +103,12 @@ figure {
     @include below(md) {
         display: none !important;
     }
+}
+
+#landing-section {
+    background-image: linear-gradient(to bottom, $landing-gradient-start-color, $landing-gradient-end-color, $landing-gradient-end-color);
+}
+
+.has-material-shadow-2 {
+    @include has-material-shadow(2);
 }

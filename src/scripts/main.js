@@ -1,6 +1,7 @@
 /* eslint-disable no-undef */
 import getChartConfig from './utils/chartConfig';
 import deriveCGPA from './utils/deriveCGPA';
+import attachHamburgerClickListeners from './utils/toggleHamburger';
 import { GPA_DATA, SEM_DATA } from './constants';
 
 // const mainProgressBar = document.getElementById('main-progress-bar');
@@ -38,4 +39,5 @@ window.onload = () => {
   // document.addEventListener('aos:in:animate-gpa-chart', createGPAChart);
   // document.addEventListener('aos:out:animate-gpa-chart', destroyGPAChart);
   document.addEventListener('aos:in:animate-gpa-chart', doChartAnimation);
+  attachHamburgerClickListeners();
 };
