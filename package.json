@@ -6,7 +6,7 @@
   "scripts": {
     "clean": "rm -rf dist && rm -rf .cache",
     "start": "npm run clean && parcel ./src/*.pug",
-    "prebuild": "npm run clean && parcel build ./src/*.pug --no-source-maps --experimental-scope-hoisting --no-content-hash",
+    "prebuild": "npm run clean && parcel build ./src/*.pug --no-source-maps --experimental-scope-hoisting",
     "build": "purgecss -c ./purgecss.config.js -o ./dist/",
     "postbuild": "touch dist/CNAME && echo \"www.arvindsuresh.in\" > dist/CNAME",
     "lint": "eslint ./src --ext .js",
