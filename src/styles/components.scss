@@ -114,3 +114,7 @@ figure {
 .has-material-shadow-2 {
     @include has-material-shadow(2);
 }
+
+#navbar-main {
+    transition: all 300ms ease;
+}
