@@ -7,6 +7,7 @@ import { GPA_DATA, SEM_DATA } from './constants';
 const gpaChartContext = document.getElementById('gpa-chart').getContext('2d');
 const landingSection = document.getElementById('landing-section');
 const navbarSection = document.getElementById('navbar-main');
+const cgpaSpan = document.getElementById('cgpa-span');
 
 const CGPA_DATA = deriveCGPA(GPA_DATA);
 
@@ -34,6 +35,11 @@ const toggleNavbarDepth = () => {
   navbarSection.classList.toggle('has-material-shadow-2');
 };
 
+const writeCgpa = () => {
+  const cgpa = GPA_DATA.reduce((a, b) => (a + b)) / GPA_DATA.length;
+  cgpaSpan.innerText = cgpa.toFixed(2);
+};
+
 window.onload = () => {
   AOS.init();
   Chart.defaults.global.animation.easing = 'easeInOutSine';
@@ -42,4 +48,5 @@ window.onload = () => {
   document.addEventListener('aos:out:animate-gpa-chart', doChartAnimation);
   new IntersectionObserver(toggleNavbarDepth).observe(landingSection);
   attachHamburgerClickListeners();
+  writeCgpa();
 };
