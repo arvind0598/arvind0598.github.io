@@ -1,9 +1,10 @@
-import {Box} from "grommet";
+import React from 'react';
+import { Box } from 'grommet';
 
 const DisplayPaneComponent = () => (
-    <Box>
-        haha
-    </Box>
+  <Box>
+    haha
+  </Box>
 );
 
 export default DisplayPaneComponent;
