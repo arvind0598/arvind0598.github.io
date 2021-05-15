@@ -8,7 +8,7 @@ import SidebarButtonComponent from '../sidebar-button/sidebar-button.component';
 
 type SidebarProps = {
     selectedSection: Section;
-  // eslint-disable-next-line no-unused-vars
+    // eslint-disable-next-line no-unused-vars
     updateSelectedSection: (section: Section) => void,
 };
 
@@ -60,15 +60,21 @@ const SidebarComponent = ({
     />
   );
 
+  const toggleRenderMode = () => {
+    console.log('feature not ready yet');
+  };
+
   return (
     <Sidebar
-      background="brand"
-      header={flexDirection === 'row' && <Avatar src="//s.gravatar.com/avatar/b7fb138d53ba0f573212ccce38a7c43b?s=80" />}
+      background="neutral-4"
+      header={flexDirection === 'row'
+            && <Avatar src="/android-chrome-192x192.png" onClick={() => toggleRenderMode()} />}
       footer={(
         <SidebarButtonComponent
           icon={<Icons.DownloadOption />}
           tip="Download Resume"
           section="SECTION_ABOUT"
+          href="/Resume-2021.pdf"
           isSelectedButton={false}
           updateSelectedButton={() => {}}
           key="SECTION_DOWNLOAD"

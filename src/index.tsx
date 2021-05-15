@@ -1,29 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './styles/index.css';
-import { Grommet, ThemeType } from 'grommet';
+import './styles/index.scss';
+import { Grommet } from 'grommet';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-
-const theme: ThemeType = {
-  global: {
-    font: {
-      family: 'Poppins',
-      size: '1em',
-    },
-  },
-  heading: {
-    font: {
-      family: 'Lora',
-    },
-  },
-  tip: {
-    content: {
-      background: 'accent-1',
-      elevation: 'none',
-    },
-  },
-};
+import theme from './utils/theme';
 
 ReactDOM.render(
   <React.StrictMode>

@@ -5,6 +5,7 @@ import { Section } from '../../utils/types';
 import AboutMeSection from './about-me/about-me.section';
 import ExperienceSection from './experience/experience.section';
 import EducationSection from './education/education.section';
+import SkillsSection from './skills/skills.section';
 
 const InfoPaneComponent = () => {
   const displaySize = useContext(ResponsiveContext);
@@ -28,6 +29,9 @@ const InfoPaneComponent = () => {
       case 'SECTION_EDUCATION': {
         return <EducationSection isDesktop={isDesktop} />;
       }
+      case 'SECTION_SKILLS': {
+        return <SkillsSection isDesktop={isDesktop} />;
+      }
       default: {
         return null;
       }
@@ -35,8 +39,8 @@ const InfoPaneComponent = () => {
   };
 
   return (
-    <Box direction={isDesktop ? 'row' : 'column'} background="neutral-2" fill>
-      <Box direction="row" pad="medium" fill>
+    <Box direction={isDesktop ? 'row' : 'column'} background="neutral-3" fill>
+      <Box direction="row" pad="medium" fill id="info-pane">
         {
           getRenderedSection(selectedSection)
         }

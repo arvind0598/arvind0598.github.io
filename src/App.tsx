@@ -15,7 +15,7 @@ const App = () => {
 
   return (
     <Box direction="row" pad="small" fill>
-      <Box width="40%" background="neutral-4">
+      <Box width="40%">
         <DisplayPaneComponent />
       </Box>
       <Box width="60%">

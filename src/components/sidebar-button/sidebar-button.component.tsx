@@ -15,6 +15,7 @@ const SidebarButtonComponent = ({
   icon,
   section,
   tip,
+  href,
   isSelectedButton,
   updateSelectedButton,
 }: SidebarButtonProps) => {
@@ -49,6 +50,8 @@ const SidebarButtonComponent = ({
       style={centeredButtonStyle}
       primary={isSelectedButton}
       onClick={() => handleOnClickEvent()}
+      href={href}
+      target="_blank"
       fill={false}
     />
   );

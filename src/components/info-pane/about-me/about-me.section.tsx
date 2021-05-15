@@ -8,22 +8,26 @@ const getParagraphStyles = (isDesktop: boolean): CSSProperties => ({
 
 const AboutMeSection = ({ isDesktop }: SectionProps) => (
   <Box fill>
-    <Heading level="1"> Who Am I? </Heading>
     <Box width={isDesktop ? '80%' : '100%'}>
+      <Box fill pad="medium">
+        <Heading level="3" fill>
+          &quot;Arvind likes to code. He has excellent visual sense when designing interfaces, but
+          much less so in other parts of his life, often favoring grey shirts on grey pants.&quot;
+          <Paragraph size="medium" textAlign="end" style={getParagraphStyles(isDesktop)} fill>
+            -Most people who know me.
+          </Paragraph>
+        </Heading>
+      </Box>
       <Paragraph style={getParagraphStyles(isDesktop)} fill>
-        I&apos;m an Application Engineer at BlackRock. In this role, I work primarily with
-        full-stack web development and automation within an operations team.
+        I&apos;m a software developer who prioritizes PRISTINE code above most other things in life.
+        Entering the workforce has given me even more love for this work. I code products with
+        great respect to standards because it makes life a lot easier for everyone involved.
       </Paragraph>
       <Paragraph style={getParagraphStyles(isDesktop)} fill>
-        I&apos;m passionate about my work, and I&apos;m always eager to connect with other
-        developers who work with automation. While I enjoy all aspects of my job, I think my
-        favorite stages of a project are ideation and development. I live for automating workflows.
-      </Paragraph>
-      <Paragraph style={getParagraphStyles(isDesktop)} fill>
-        I graduated from MIT Manipal in 2020 with a BTech in Computers and Communication and a minor
-        in Big Data. I&apos;m always interested in hearing from interesting folk, so do contact me
-        if you&apos;d like to connect and talk about whatever the latest new trendy JavaScript
-        library there is.
+        When I&apos;m not working, you&apos;d usually find me playing 4X or turn-based strategy
+        games on my laptop. If life is good, you&apos;d probably even find me outside playing
+        football. I have made it a personal mission to pet every cat I come across, and so far,
+        I must admit that it&apos;s been going splendidly.
       </Paragraph>
     </Box>
   </Box>
