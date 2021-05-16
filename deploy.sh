@@ -1,4 +1,6 @@
 git checkout year/2021
+rm -rf build
+npm run build
 touch build/.nojekyll
 touch build/CNAME
 echo "www.arvindsuresh.in" > build/CNAME
