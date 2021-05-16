@@ -60,15 +60,11 @@ const SidebarComponent = ({
     />
   );
 
-  const toggleRenderMode = () => {
-    console.log('feature not ready yet');
-  };
-
   return (
     <Sidebar
       background="neutral-4"
       header={flexDirection === 'row'
-            && <Avatar src="/android-chrome-192x192.png" onClick={() => toggleRenderMode()} />}
+            && <Avatar src="/android-chrome-192x192.png" />}
       footer={(
         <SidebarButtonComponent
           icon={<Icons.DownloadOption />}
