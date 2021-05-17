@@ -23,5 +23,15 @@ code {
 #info-pane {
   @include below(md) {
     overflow: auto;
+    margin-bottom: 10vh;
+  }
+}
+
+#sidebar-wrapper {
+  @include below(md) {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
   }
 }

@@ -45,7 +45,7 @@ const InfoPaneComponent = () => {
           getRenderedSection(selectedSection)
         }
       </Box>
-      <Box direction="column">
+      <Box direction="column" id="sidebar-wrapper">
         <SidebarComponent
           selectedSection={selectedSection}
           updateSelectedSection={updateSelectedSection}
