@@ -22,7 +22,7 @@ const theme: ThemeType = {
         dark: 'rgba(255,255,255,0.33)',
         light: 'rgba(0,0,0,0.33)',
       },
-      brand: '#123C69',
+      brand: '#AC3B61',
       control: {
         dark: 'accent-1',
         light: 'brand',

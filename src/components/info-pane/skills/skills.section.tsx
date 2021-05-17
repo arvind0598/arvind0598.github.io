@@ -12,10 +12,11 @@ const SkillsSection = ({ isDesktop }: SectionProps) => (
     <Box width={isDesktop ? '80%' : '100%'}>
       <Paragraph style={getParagraphStyles(isDesktop)} fill>
         I&apos;m primarily a full-stack developer. I&apos;m proficient with front-end development
-        using various JS frameworks like React (with Redux), Angular (with NgRx), and HTML
-        preprocessors like Pug. On the back-end, I have worked most with Java and Spring. However,
-        I have experience using Ruby (Sinatra) and Node (Express) to get things done. I mainly work
-        with relational databases and have a good grasp of database design and normalization.
+        using various JS frameworks like <b>React</b> (with <b>Redux</b>), <b>Angular</b>
+        (with <b>NgRx</b>), and HTML preprocessors like <b>Pug</b>. On the back-end, I have worked
+        most with <b>Java and Spring</b>. However, I have experience using <b>Ruby (Sinatra)</b> and
+        &nbsp;<b>Node (Express)</b> to get things done. I mainly work with relational databases and
+        have a good grasp of database design and normalization.
       </Paragraph>
       <Paragraph style={getParagraphStyles(isDesktop)} fill>
         I strongly believe in the importance of writing code that is readable, well-documented,

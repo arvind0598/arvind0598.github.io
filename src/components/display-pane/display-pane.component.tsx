@@ -20,7 +20,8 @@ const DisplayPaneComponent = () => (
     <Box height="medium" width="medium" round="100%" border={imageBorder} margin="large">
       <Image fit="cover" src="/profile.webp" style={{ borderRadius: '100%' }} />
     </Box>
-    <Paragraph size="xxlarge"> Hey there, let&apos;s connect!</Paragraph>
+    <Paragraph size="xlarge"> Arvind Suresh </Paragraph>
+    <Paragraph size="large"> arvind0598@gmail.com </Paragraph>
     <Box as="nav" direction="row">
       <Anchor icon={<LinkedinOption />} href="https://linkedin.com/in/arvind0598" target="_blank" />
       <Anchor icon={<Github />} href="https://github.com/arvind0598" target="_blank" />

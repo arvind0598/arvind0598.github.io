@@ -1,4 +1,4 @@
-import { Box, Heading, Paragraph } from 'grommet';
+import { Box, Paragraph } from 'grommet';
 import React, { CSSProperties } from 'react';
 import { SectionProps } from '../../../utils/types';
 
@@ -6,18 +6,22 @@ const getParagraphStyles = (isDesktop: boolean): CSSProperties => ({
   lineHeight: isDesktop ? '2em' : '1.5em',
 });
 
+const getQuoteStyles = (isDesktop: boolean): CSSProperties => ({
+  ...getParagraphStyles(isDesktop),
+  fontWeight: 500,
+  fontStyle: 'italic',
+});
+
 const AboutMeSection = ({ isDesktop }: SectionProps) => (
   <Box fill>
     <Box width={isDesktop ? '80%' : '100%'}>
-      <Box fill pad="medium">
-        <Heading level="3" fill>
-          &quot;Arvind likes to code. He has excellent visual sense when designing interfaces, but
-          much less so in other parts of his life, often favoring grey shirts on grey pants.&quot;
-          <Paragraph size="medium" textAlign="end" style={getParagraphStyles(isDesktop)} fill>
-            -Most people who know me.
-          </Paragraph>
-        </Heading>
-      </Box>
+      <Paragraph style={getQuoteStyles(isDesktop)} fill>
+        &quot;Arvind likes to code. He has excellent visual sense when designing interfaces, but
+        much less so in other parts of his life, often favoring grey shirts on grey pants.&quot;
+      </Paragraph>
+      <Paragraph size="medium" textAlign="end" style={getQuoteStyles(isDesktop)} margin={{ bottom: 'medium' }} fill>
+        -Most people who know me.
+      </Paragraph>
       <Paragraph style={getParagraphStyles(isDesktop)} fill>
         I&apos;m a software developer who prioritizes PRISTINE code above most other things in life.
         Entering the workforce has given me even more love for this work. I code products with
