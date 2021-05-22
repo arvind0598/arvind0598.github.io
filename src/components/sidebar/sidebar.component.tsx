@@ -1,45 +1,20 @@
-import {
-  Avatar, Nav, ResponsiveContext, Sidebar,
-} from 'grommet';
-import * as Icons from 'grommet-icons';
 import React, { useContext } from 'react';
-import { Section } from '../../utils/types';
+import {
+  Avatar,
+  Nav,
+  ResponsiveContext,
+  Sidebar,
+} from 'grommet';
+import { DownloadOption } from 'grommet-icons';
+import { ButtonData, Section } from '../../utils/types';
 import SidebarButtonComponent from '../sidebar-button/sidebar-button.component';
+import { BUTTON_DATA } from '../../data/sections-data';
 
 type SidebarProps = {
     selectedSection: Section;
     // eslint-disable-next-line no-unused-vars
     updateSelectedSection: (section: Section) => void,
 };
-
-type ButtonData = {
-    section: Section;
-    tip: string;
-    icon: JSX.Element;
-};
-
-const buttons: ButtonData[] = [
-  {
-    section: 'SECTION_ABOUT',
-    tip: 'About Me',
-    icon: <Icons.User />,
-  },
-  {
-    section: 'SECTION_EXPERIENCE',
-    tip: 'Experience',
-    icon: <Icons.Briefcase />,
-  },
-  {
-    section: 'SECTION_EDUCATION',
-    tip: 'Education',
-    icon: <Icons.Book />,
-  },
-  {
-    section: 'SECTION_SKILLS',
-    tip: 'Skills',
-    icon: <Icons.Deploy />,
-  },
-];
 
 const SidebarComponent = ({
   selectedSection,
@@ -67,7 +42,7 @@ const SidebarComponent = ({
             && <Avatar src="/android-chrome-192x192.png" />}
       footer={(
         <SidebarButtonComponent
-          icon={<Icons.DownloadOption />}
+          icon={<DownloadOption />}
           tip="Download Resume"
           section="SECTION_ABOUT"
           href="/Resume-2021.pdf"
@@ -81,7 +56,7 @@ const SidebarComponent = ({
     >
       <Nav direction={antiFlexDirection}>
         {
-          buttons.map(createButton)
+          BUTTON_DATA.map(createButton)
         }
       </Nav>
     </Sidebar>

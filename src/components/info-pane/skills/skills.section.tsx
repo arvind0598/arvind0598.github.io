@@ -1,10 +1,7 @@
+import React from 'react';
 import { Box, Heading, Paragraph } from 'grommet';
-import React, { CSSProperties } from 'react';
 import { SectionProps } from '../../../utils/types';
-
-const getParagraphStyles = (isDesktop: boolean): CSSProperties => ({
-  lineHeight: isDesktop ? '2em' : '1.5em',
-});
+import { getParagraphStyles } from '../../../utils/render-data';
 
 const SkillsSection = ({ isDesktop }: SectionProps) => (
   <Box fill>

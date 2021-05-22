@@ -1,10 +1,7 @@
 import { Box, Paragraph } from 'grommet';
 import React, { CSSProperties } from 'react';
 import { SectionProps } from '../../../utils/types';
-
-const getParagraphStyles = (isDesktop: boolean): CSSProperties => ({
-  lineHeight: isDesktop ? '2em' : '1.5em',
-});
+import { getParagraphStyles } from '../../../utils/render-data';
 
 const getQuoteStyles = (isDesktop: boolean): CSSProperties => ({
   ...getParagraphStyles(isDesktop),
@@ -19,7 +16,13 @@ const AboutMeSection = ({ isDesktop }: SectionProps) => (
         &quot;Arvind likes to code. He has excellent visual sense when designing interfaces, but
         much less so in other parts of his life, often favoring grey shirts on grey pants.&quot;
       </Paragraph>
-      <Paragraph size="medium" textAlign="end" style={getQuoteStyles(isDesktop)} margin={{ bottom: 'medium' }} fill>
+      <Paragraph
+        size="medium"
+        textAlign="end"
+        style={getQuoteStyles(isDesktop)}
+        margin={{ bottom: 'medium' }}
+        fill
+      >
         -Most people who know me.
       </Paragraph>
       <Paragraph style={getParagraphStyles(isDesktop)} fill>

@@ -14,3 +14,9 @@ export type CompanyDetails = {
     companyName: string;
     companyLink: string;
 };
+
+export type ButtonData = {
+    section: Section;
+    tip: string;
+    icon: JSX.Element;
+};

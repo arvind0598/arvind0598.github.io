@@ -1,32 +1,16 @@
+import React from 'react';
 import {
-  Anchor, Box, Heading, Paragraph,
+  Anchor,
+  Box,
+  Heading,
+  Paragraph,
 } from 'grommet';
-import React, { CSSProperties } from 'react';
-import { Company, CompanyDetails, SectionProps } from '../../../utils/types';
-
-const getParagraphStyles = (isDesktop: boolean): CSSProperties => ({
-  lineHeight: isDesktop ? '2em' : '1.5em',
-});
+import { Company, SectionProps } from '../../../utils/types';
+import { EXPERIENCE_DATA } from '../../../data/sections-data';
+import { getParagraphStyles } from '../../../utils/render-data';
 
 const createCompanyAnchor = (companyName: Company): JSX.Element => {
-  const companies: Record<Company, CompanyDetails> = {
-    CMP_BLK: {
-      company: 'CMP_BLK',
-      companyName: 'BlackRock',
-      companyLink: 'https://www.blackrock.com/corporate?userType=unknown',
-    },
-    CMP_SE: {
-      company: 'CMP_SE',
-      companyName: 'Schneider Electric',
-      companyLink: 'https://www.se.com/in/en/',
-    },
-    CMP_HPCL: {
-      company: 'CMP_HPCL',
-      companyName: 'Hindustan Petroleum',
-      companyLink: 'https://hindustanpetroleum.com/',
-    },
-  };
-  const companyData = companies[companyName];
+  const companyData = EXPERIENCE_DATA[companyName];
   const anchorHref = companyData.companyLink || '#';
   return (
     <Anchor href={anchorHref} target="_blank">

@@ -19,23 +19,14 @@ const InfoPaneComponent = () => {
   };
 
   const getRenderedSection = (section: Section): JSX.Element | null => {
-    switch (section) {
-      case 'SECTION_ABOUT': {
-        return <AboutMeSection isDesktop={isDesktop} />;
-      }
-      case 'SECTION_EXPERIENCE': {
-        return <ExperienceSection isDesktop={isDesktop} />;
-      }
-      case 'SECTION_EDUCATION': {
-        return <EducationSection isDesktop={isDesktop} />;
-      }
-      case 'SECTION_SKILLS': {
-        return <SkillsSection isDesktop={isDesktop} />;
-      }
-      default: {
-        return null;
-      }
-    }
+    const sectionData: Record<Section, JSX.Element> = {
+      SECTION_ABOUT: <AboutMeSection isDesktop={isDesktop} />,
+      SECTION_EXPERIENCE: <ExperienceSection isDesktop={isDesktop} />,
+      SECTION_EDUCATION: <EducationSection isDesktop={isDesktop} />,
+      SECTION_SKILLS: <SkillsSection isDesktop={isDesktop} />,
+    };
+    const renderedSection = sectionData[section];
+    return renderedSection || null;
   };
 
   return (
