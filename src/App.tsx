@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import { Box, ResponsiveContext } from 'grommet';
 import DisplayPaneComponent from './components/display-pane/display-pane.component';
 import InfoPaneComponent from './components/info-pane/info-pane.component';

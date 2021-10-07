@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   Book,
   Briefcase,
@@ -22,7 +21,32 @@ export const EDUCATION_DATA = [
   + ' well as the college football league.',
 ];
 
+export const SKILLS_DATA = 'I\'m primarily a full-stack developer. I\'m proficient with front-end'
+  + ' development using various JS frameworks like React (with Redux), Angular(with NgRx), and HTML'
+  + ' preprocessors like Pug. On the back-end, I have worked most with Java and Spring. However, I'
+  + ' have experience using Ruby (Sinatra) and  Node (Express) to get things done. I mainly work '
+  + ' with relational databases and have a good grasp of database design and normalization.';
+
+export const SKILLS_TERMS = [
+  'React',
+  'Redux',
+  'Angular',
+  'NgRx',
+  'Pug',
+  'Java',
+  'Spring',
+  'Ruby',
+  'Sinatra',
+  'Node',
+  'Express',
+];
+
 export const EXPERIENCE_DATA: Record<Company, CompanyDetails> = {
+  CMP_SAP: {
+    company: 'CMP_SAP',
+    companyName: 'SAP Labs',
+    companyLink: 'https://www.sap.com/india/about/labs-india.html',
+  },
   CMP_BLK: {
     company: 'CMP_BLK',
     companyName: 'BlackRock',

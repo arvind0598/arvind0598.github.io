@@ -1,5 +1,5 @@
 import { Box, Paragraph } from 'grommet';
-import React, { CSSProperties } from 'react';
+import { CSSProperties } from 'react';
 import { SectionProps } from '../../../utils/types';
 import { getParagraphStyles } from '../../../utils/render-data';
 

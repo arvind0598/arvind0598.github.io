@@ -1,14 +1,14 @@
 import {
   Button, ButtonExtendedProps, ResponsiveContext, TipProps,
 } from 'grommet';
-import React, { CSSProperties, useContext } from 'react';
+import { CSSProperties, useContext } from 'react';
 import { Section } from '../../utils/types';
 
 type SidebarButtonProps = ButtonExtendedProps & {
-    section: Section;
-    isSelectedButton: boolean;
+  section: Section;
+  isSelectedButton: boolean;
   // eslint-disable-next-line no-unused-vars
-    updateSelectedButton: (section: Section) => void;
+  updateSelectedButton: (section: Section) => void;
 };
 
 const SidebarButtonComponent = ({

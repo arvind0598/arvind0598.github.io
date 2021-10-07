@@ -1,4 +1,4 @@
-import React, { CSSProperties } from 'react';
+import { CSSProperties } from 'react';
 import { Paragraph } from 'grommet';
 
 export const getParagraphStyles = (isDesktop: boolean): CSSProperties => ({

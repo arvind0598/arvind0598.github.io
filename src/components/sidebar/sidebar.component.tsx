@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import {
   Avatar,
   Nav,
@@ -11,9 +11,9 @@ import SidebarButtonComponent from '../sidebar-button/sidebar-button.component';
 import { BUTTON_DATA } from '../../data/sections-data';
 
 type SidebarProps = {
-    selectedSection: Section;
-    // eslint-disable-next-line no-unused-vars
-    updateSelectedSection: (section: Section) => void,
+  selectedSection: Section;
+  // eslint-disable-next-line no-unused-vars
+  updateSelectedSection: (section: Section) => void,
 };
 
 const SidebarComponent = ({
@@ -45,7 +45,7 @@ const SidebarComponent = ({
           icon={<DownloadOption />}
           tip="Download Resume"
           section="SECTION_ABOUT"
-          href="/Resume-2021.pdf"
+          href="/Resume-Linkedin-2021.pdf"
           isSelectedButton={false}
           updateSelectedButton={() => {}}
           key="SECTION_DOWNLOAD"

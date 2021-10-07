@@ -1,4 +1,3 @@
-import React from 'react';
 import { Box, Heading } from 'grommet';
 import { SectionProps } from '../../../utils/types';
 import { EDUCATION_DATA } from '../../../data/sections-data';

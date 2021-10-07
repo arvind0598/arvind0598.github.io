@@ -1,20 +1,19 @@
-import React from 'react';
 import { Box, Heading, Paragraph } from 'grommet';
 import { SectionProps } from '../../../utils/types';
 import { getParagraphStyles } from '../../../utils/render-data';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import HighlightedParagraph from '../../highlighter/highlighter.component';
+import { SKILLS_DATA, SKILLS_TERMS } from '../../../data/sections-data';
 
 const SkillsSection = ({ isDesktop }: SectionProps) => (
   <Box fill>
     <Heading level="1"> What do I do? </Heading>
     <Box width={isDesktop ? '80%' : '100%'}>
-      <Paragraph style={getParagraphStyles(isDesktop)} fill>
-        I&apos;m primarily a full-stack developer. I&apos;m proficient with front-end development
-        using various JS frameworks like <b>React</b> (with <b>Redux</b>), <b>Angular</b>
-        (with <b>NgRx</b>), and HTML preprocessors like <b>Pug</b>. On the back-end, I have worked
-        most with <b>Java and Spring</b>. However, I have experience using <b>Ruby (Sinatra)</b> and
-        &nbsp;<b>Node (Express)</b> to get things done. I mainly work with relational databases and
-        have a good grasp of database design and normalization.
-      </Paragraph>
+      <HighlightedParagraph
+        isDesktop={isDesktop}
+        terms={SKILLS_TERMS}
+        text={SKILLS_DATA}
+      />
       <Paragraph style={getParagraphStyles(isDesktop)} fill>
         I strongly believe in the importance of writing code that is readable, well-documented,
         and well-tested. To that end, I have experience testing with JUnit, Mockito, Jest, and
