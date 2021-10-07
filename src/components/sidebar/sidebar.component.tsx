@@ -45,7 +45,7 @@ const SidebarComponent = ({
           icon={<DownloadOption />}
           tip="Download Resume"
           section="SECTION_ABOUT"
-          href="/Resume-Linkedin-2021.pdf"
+          href="/Resume-2021.pdf"
           isSelectedButton={false}
           updateSelectedButton={() => {}}
           key="SECTION_DOWNLOAD"
