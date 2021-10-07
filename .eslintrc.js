@@ -9,6 +9,7 @@ module.exports = {
     JSX: true,
   },
   extends: [
+    'eslint:recommended',
     'plugin:react/recommended',
     'airbnb-typescript',
   ],
@@ -23,6 +24,7 @@ module.exports = {
   },
   plugins: [
     'react',
+    'import',
     '@typescript-eslint',
   ],
   ignorePatterns: ['tsconfig.json'],
@@ -31,6 +33,9 @@ module.exports = {
       node: {
         extensions: ['.js', '.jsx', '.ts', '.tsx'],
       },
+      react: {
+        version: 'detect',
+      }
     },
   },
 };
