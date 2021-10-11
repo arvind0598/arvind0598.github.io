@@ -8,28 +8,27 @@ import {
 import { DownloadOption } from 'grommet-icons';
 import { ButtonData, Section } from '../../utils/types';
 import SidebarButtonComponent from '../sidebar-button/sidebar-button.component';
-import { BUTTON_DATA } from '../../data/sections-data';
 
 type SidebarProps = {
-  selectedSection: Section;
+  sections: ButtonData[];
   // eslint-disable-next-line no-unused-vars
   updateSelectedSection: (section: Section) => void,
 };
 
 const SidebarComponent = ({
-  selectedSection,
+  sections,
   updateSelectedSection,
 }: SidebarProps) => {
   const displaySize = useContext(ResponsiveContext);
   const flexDirection = displaySize === 'small' ? 'column' : 'row';
   const antiFlexDirection = displaySize === 'small' ? 'row' : 'column';
 
-  const createButton = ({ section, tip, icon }: ButtonData): JSX.Element => (
+  const createButton = ({ section, tip, icon, isActive }: ButtonData): JSX.Element => (
     <SidebarButtonComponent
       icon={icon}
       section={section}
       tip={tip}
-      isSelectedButton={selectedSection === section}
+      isSelectedButton={isActive || false}
       updateSelectedButton={updateSelectedSection}
       key={section}
     />
@@ -56,7 +55,7 @@ const SidebarComponent = ({
     >
       <Nav direction={antiFlexDirection}>
         {
-          BUTTON_DATA.map(createButton)
+          sections.map(createButton)
         }
       </Nav>
     </Sidebar>

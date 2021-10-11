@@ -9,6 +9,10 @@ import {
 } from 'grommet-icons';
 import { ButtonData, Company, CompanyDetails } from '../utils/types';
 import { SocialData } from '../models/social-data';
+import AboutMeSection from '../components/info-pane/about-me/about-me.section';
+import ExperienceSection from '../components/info-pane/experience/experience.section';
+import EducationSection from '../components/info-pane/education/education.section';
+import SkillsSection from '../components/info-pane/skills/skills.section';
 
 export const EDUCATION_DATA = [
   'I graduated from Manipal Institute of Technology (Manipal) in 2020 with a Bachelor\'s\n'
@@ -85,21 +89,30 @@ export const SOCIAL_DATA: SocialData[] = [
 export const BUTTON_DATA: ButtonData[] = [
   {
     section: 'SECTION_ABOUT',
+    Component: AboutMeSection,
+    href: '#about',
     tip: 'About Me',
     icon: <User />,
+    isActive: true,
   },
   {
     section: 'SECTION_EXPERIENCE',
+    Component: ExperienceSection,
+    href: '#experience',
     tip: 'Experience',
     icon: <Briefcase />,
   },
   {
     section: 'SECTION_EDUCATION',
+    Component: EducationSection,
+    href: '#education',
     tip: 'Education',
     icon: <Book />,
   },
   {
     section: 'SECTION_SKILLS',
+    Component: SkillsSection,
+    href: '#skills',
     tip: 'Skills',
     icon: <Deploy />,
   },

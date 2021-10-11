@@ -7,14 +7,14 @@ const App = () => {
   const displaySize = useContext(ResponsiveContext);
   if (displaySize === 'small') {
     return (
-      <Box direction="column" pad="small" fill>
+      <Box direction="column" fill>
         <InfoPaneComponent />
       </Box>
     );
   }
 
   return (
-    <Box direction="row" pad="small" fill>
+    <Box direction="row" fill>
       <Box width="40%">
         <DisplayPaneComponent />
       </Box>

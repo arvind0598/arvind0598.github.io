@@ -1,44 +1,42 @@
 import { Box, ResponsiveContext } from 'grommet';
-import React, { useContext, useState } from 'react';
+import { useContext, useState } from 'react';
 import SidebarComponent from '../sidebar/sidebar.component';
 import { Section } from '../../utils/types';
-import AboutMeSection from './about-me/about-me.section';
-import ExperienceSection from './experience/experience.section';
-import EducationSection from './education/education.section';
-import SkillsSection from './skills/skills.section';
+import { BUTTON_DATA } from '../../data/sections-data';
+import SimpleBar from 'simplebar-react';
+import 'simplebar/dist/simplebar.min.css';
+import DisplayPaneComponent from '../display-pane/display-pane.component';
 
 const InfoPaneComponent = () => {
   const displaySize = useContext(ResponsiveContext);
-  const [selectedSection, setSelectedSection] = useState<Section>('SECTION_ABOUT');
+  const [selectedSection, setSelectedSection] = useState(0);
   const isDesktop = displaySize !== 'small';
+  const sectionsList = BUTTON_DATA;
 
   const updateSelectedSection = (section: Section): void => {
-    if (section !== selectedSection) {
-      setSelectedSection(section);
+    const sectionIndex = sectionsList.findIndex((button) => button.section === section);
+    if (sectionIndex !== selectedSection) {
+      sectionsList[selectedSection].isActive = false;
+      sectionsList[sectionIndex].isActive = true;
+      setSelectedSection(sectionIndex);
     }
-  };
-
-  const getRenderedSection = (section: Section): JSX.Element | null => {
-    const sectionData: Record<Section, JSX.Element> = {
-      SECTION_ABOUT: <AboutMeSection isDesktop={isDesktop} />,
-      SECTION_EXPERIENCE: <ExperienceSection isDesktop={isDesktop} />,
-      SECTION_EDUCATION: <EducationSection isDesktop={isDesktop} />,
-      SECTION_SKILLS: <SkillsSection isDesktop={isDesktop} />,
-    };
-    const renderedSection = sectionData[section];
-    return renderedSection || null;
   };
 
   return (
     <Box direction={isDesktop ? 'row' : 'column'} background="neutral-3" fill>
-      <Box direction="row" pad="medium" fill id="info-pane">
-        {
-          getRenderedSection(selectedSection)
-        }
+      <Box direction="column" fill id="info-pane">
+        <SimpleBar style={{ maxHeight: '100vh' }}>
+          {
+            !isDesktop && <DisplayPaneComponent />
+          }
+          {
+            BUTTON_DATA.map(({ Component, section, isActive }) => <Component isDesktop={isDesktop} isActive={isActive || false} key={section} />)
+          }
+        </SimpleBar>
       </Box>
       <Box direction="column" id="sidebar-wrapper">
         <SidebarComponent
-          selectedSection={selectedSection}
+          sections={BUTTON_DATA}
           updateSelectedSection={updateSelectedSection}
         />
       </Box>
