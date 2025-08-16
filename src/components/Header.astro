@@ -1,0 +1,180 @@
+---
+import config from "../config.ts";
+import * as content from "../content/header.md";
+import HeaderLink from "./HeaderLink.astro";
+---
+
+<header
+  class="flex flex-col items-center justify-between p-8 text-center font-sans"
+>
+  <h1 class="text-6xl">{content.frontmatter.title}</h1>
+  <h2 class="text-3xl font-light text-stone-600 dark:text-stone-400">
+    {content.frontmatter.subtitle}
+  </h2>
+</header>
+<nav class="flex justify-center items-center space-x-4 text-xl mb-8">
+  <!-- <HeaderLink href="/"> home </HeaderLink> -->
+  <!-- <HeaderLink href="/posts">posts</HeaderLink> -->
+  <!-- <HeaderLink href="/">etc</HeaderLink> -->
+  <HeaderLink
+    href={config.linkedinLink}
+    class="hover:rotate-12 hover:scale-105 p-2"
+    target="_blank"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+      <path d="M8 11v5"></path>
+      <path d="M8 8v.01"></path><path d="M12 16v-5"></path>
+      <path d="M16 16v-3a2 2 0 1 0 -4 0"></path>
+      <path
+        d="M3 7a4 4 0 0 1 4 -4h10a4 4 0 0 1 4 4v10a4 4 0 0 1 -4 4h-10a4 4 0 0 1 -4 -4z"
+      ></path>
+    </svg>
+  </HeaderLink>
+  <HeaderLink href={config.email} class="hover:rotate-12 hover:scale-105 p-2">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+      <path
+        d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z"
+      ></path>
+      <path d="M3 7l9 6l9 -6"></path>
+    </svg>
+  </HeaderLink>
+  <HeaderLink
+    href={config.resumeLink}
+    class="hover:rotate-12 hover:scale-105 p-2"
+    target="_blank"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      class="icon icon-tabler icons-tabler-outline icon-tabler-file-cv"
+    >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+      <path d="M14 3v4a1 1 0 0 0 1 1h4"></path>
+      <path
+        d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z"
+      ></path>
+      <path d="M11 12.5a1.5 1.5 0 0 0 -3 0v3a1.5 1.5 0 0 0 3 0"></path>
+      <path d="M13 11l1.5 6l1.5 -6"></path>
+    </svg>
+  </HeaderLink>
+  <div>
+    <button
+      type="button"
+      class="cursor-pointer transition-all duration-100 dark:hidden block text-stone-800 rounded-full bg-stone-200 hover:bg-stone-300 focus:outline-hidden focus:bg-stone-200"
+      id="dark-mode-button"
+    >
+      <span
+        class="group inline-flex shrink-0 justify-center items-center size-9"
+      >
+        <svg
+          class="shrink-0 size-4"
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+        </svg>
+      </span>
+    </button>
+    <button
+      type="button"
+      class="cursor-pointer transition-all duration-100 dark:block hidden text-stone-800 rounded-full bg-stone-200 hover:bg-stone-300 focus:outline-hidden focus:bg-stone-200"
+      id="light-mode-button"
+    >
+      <span
+        class="group inline-flex shrink-0 justify-center items-center size-9"
+      >
+        <svg
+          class="shrink-0 size-4"
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <circle cx="12" cy="12" r="4"></circle>
+          <path d="M12 2v2"></path>
+          <path d="M12 20v2"></path>
+          <path d="m4.93 4.93 1.41 1.41"></path>
+          <path d="m17.66 17.66 1.41 1.41"></path>
+          <path d="M2 12h2"></path>
+          <path d="M20 12h2"></path>
+          <path d="m6.34 17.66-1.41 1.41"></path>
+          <path d="m19.07 4.93-1.41 1.41"></path>
+        </svg>
+      </span>
+    </button>
+  </div>
+</nav>
+
+<script>
+  const html = document.documentElement;
+
+  const setColorScheme = (isDark: boolean) => {
+    if (isDark) {
+      html.classList.add("dark");
+      localStorage.setItem("hs_theme", "dark");
+    } else {
+      html.classList.remove("dark");
+      localStorage.setItem("hs_theme", "light");
+    }
+  };
+
+  const darkModeButton = document.getElementById("dark-mode-button");
+  if (darkModeButton) {
+    console.log("Dark mode button found");
+    darkModeButton.addEventListener("click", () => {
+      console.log("Dark mode button clicked");
+      setColorScheme(true);
+    });
+  }
+
+  const lightModeButton = document.getElementById("light-mode-button");
+  if (lightModeButton) {
+    console.log("Light mode button found");
+    lightModeButton.addEventListener("click", () => {
+      console.log("Light mode button clicked");
+
+      setColorScheme(false);
+    });
+  }
+</script>

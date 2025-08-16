@@ -1,0 +1,31 @@
+---
+import ColorScript from "../components/ColorScript.astro";
+import Footer from "../components/Footer.astro";
+import type { HeadProps } from "../components/Head.astro";
+import Head from "../components/Head.astro";
+import Header from "../components/Header.astro";
+
+type Props = HeadProps;
+
+const { title, description, image, publishDate, author, type } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <Head
+    title={title}
+    description={description}
+    image={image}
+    publishDate={publishDate}
+    author={author}
+    type={type}
+  />
+  <body
+    class="font-serif bg-stone-100 dark:bg-stone-900 text-stone-900 dark:text-stone-100 selection:bg-stone-300 dark:selection:bg-stone-700 text-lg flex flex-col items-center align-center"
+  >
+    <Header />
+    <slot />
+    <Footer />
+    <ColorScript />
+  </body>
+</html>

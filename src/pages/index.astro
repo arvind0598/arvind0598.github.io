@@ -1,0 +1,14 @@
+---
+import * as content from "../content/index.mdx";
+
+import Layout from "../layouts/Layout.astro";
+import "../styles/global.css";
+---
+
+<Layout title="Arvind Suresh" description="Software Engineer">
+  <div
+    class="prose prose-stone prose-lg dark:prose-invert prose-a:underline-offset-4"
+  >
+    <content.Content />
+  </div>
+</Layout>

@@ -1,0 +1,36 @@
+<script is:inline>
+  let colors = ["#24d05a", "#eb4888", "#10a2f5", "#e9bc3f"];
+
+  function getRandomColor() {
+    return colors[Math.floor(Math.random() * colors.length)];
+  }
+
+  function setRandomLinkColor() {
+    Array.from(document.getElementsByTagName("a")).forEach((el) => {
+      const color = getRandomColor();
+      el.style.textDecorationColor = color;
+    });
+  }
+
+  function updateSingleLinkColor(link) {
+    link.style.color = link.style.textDecorationColor;
+  }
+
+  function setColorHoverListener() {
+    Array.from(document.querySelectorAll("a, button")).forEach((el) => {
+      el.addEventListener("mouseover", setRandomLinkColor);
+      el.addEventListener("mouseover", () => {
+        updateSingleLinkColor(el);
+      });
+
+      el.addEventListener("mouseout", () => {
+        el.style.color = "";
+      });
+    });
+  }
+
+  (function () {
+    setRandomLinkColor();
+    setColorHoverListener();
+  })();
+</script>

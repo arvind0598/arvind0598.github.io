@@ -1,0 +1,130 @@
+---
+import DarkMode from "./DarkMode.astro";
+
+export interface HeadProps {
+  title: string;
+  description: string;
+  image?: string;
+  publishDate?: string;
+  author?: string;
+  type?: "website" | "article";
+}
+
+const {
+  title,
+  description,
+  image = "/home-blog-card.png",
+  publishDate,
+  author,
+  type = "website",
+} = Astro.props;
+---
+
+<head>
+  <!-- Global Metadata -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+  <meta name="generator" content={Astro.generator} />
+
+  <!-- Performance & Loading -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- SEO -->
+  <link rel="canonical" href={Astro.url} />
+
+  <!-- Primary Meta Tags -->
+  <title>{title}</title>
+  <meta name="title" content={title} />
+  <meta name="description" content={description} />
+  <meta name="author" content={author || "Arvind"} />
+
+  <!-- Theme and Visual -->
+  <meta name="theme-color" content="#000000" />
+  <meta name="msapplication-TileColor" content="#000000" />
+  <meta name="color-scheme" content="light dark" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content={type} />
+  <meta property="og:url" content={Astro.url} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={new URL(image, Astro.url)} />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:site_name" content={title} />
+
+  <!-- Article-specific Open Graph (for blog posts) -->
+  {
+    type === "article" && publishDate && (
+      <meta property="article:published_time" content={publishDate} />
+    )
+  }
+  {
+    type === "article" && author && (
+      <meta property="article:author" content={author} />
+    )
+  }
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content={Astro.url} />
+  <meta property="twitter:title" content={title} />
+  <meta property="twitter:description" content={description} />
+  <meta name="twitter:image" content={new URL(image, Astro.url)} />
+
+  <!-- Apple -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#000000" />
+
+  <!-- Manifest -->
+  <link rel="manifest" href="/site.webmanifest" />
+
+  <!-- RSS Link -->
+  <link
+    rel="alternate"
+    href="/rss.xml"
+    type="application/rss+xml"
+    title={title}
+  />
+
+  <!-- Sitemap -->
+  <link rel="sitemap" href="/sitemap-index.xml" />
+
+  <!-- Security -->
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+
+  <!-- Structured Data -->
+  <script
+    type="application/ld+json"
+    set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": type === "article" ? "Article" : "WebSite",
+      name: title,
+      headline: title,
+      description: description,
+      url: Astro.url.toString(),
+      image: new URL(image, Astro.url).toString(),
+      ...(type === "article" && publishDate && { datePublished: publishDate }),
+      ...(type === "article" &&
+        author && {
+          author: {
+            "@type": "Person",
+            name: author,
+          },
+        }),
+      ...(type === "website" && {
+        publisher: {
+          "@type": "Organization",
+          name: title,
+        },
+      }),
+    })}
+  />
+
+  <DarkMode />
+</head>

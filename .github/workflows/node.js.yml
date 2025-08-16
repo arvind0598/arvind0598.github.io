@@ -5,29 +5,27 @@ name: Node.js CI
 
 on:
   push:
-    branches: [ year/2021 ]
+    branches: [year/2021]
   pull_request:
-    branches: [ year/2021 ]
+    branches: [year/2021]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v2
-      with:
-        node-version: 14.x
-    - run: npm ci
-    - run: npm run build --if-present
-    - run: touch build/.nojekyll
-    - run: touch build/CNAME
-    - run: echo "www.arvindsuresh.in" > build/CNAME 
-    - name: Push git subdirectory as branch
-      uses: s0/git-publish-subdir-action@v2.5.0
-      env:
-        REPO: self
-        BRANCH: master
-        FOLDER: build
-        GITHUB_TOKEN: ${{ secrets.personal_token }}
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: 24.x
+      - run: npm ci
+      - run: npm run build --if-present
+      - run: touch build/CNAME
+      - run: echo "www.arvindsuresh.in" > build/CNAME
+      - name: Push git subdirectory as branch
+        uses: s0/git-publish-subdir-action@v2.5.0
+        env:
+          REPO: self
+          BRANCH: master
+          FOLDER: build
+          GITHUB_TOKEN: ${{ secrets.personal_token }}
