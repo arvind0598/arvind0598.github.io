@@ -1,7 +1,6 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
-
 @theme {
   --font-sans: "Oswald", sans-serif;
   --font-serif: "Source Serif 4", serif;

@@ -23,8 +23,11 @@ const { title, description, image, publishDate, author, type } = Astro.props;
   <body
     class="font-serif bg-stone-100 dark:bg-stone-900 text-stone-900 dark:text-stone-100 selection:bg-stone-300 dark:selection:bg-stone-700 text-lg flex flex-col items-center align-center"
   >
+    <a href="#main-content" class="absolute -top-10 left-2 z-50 bg-black text-white px-4 py-2 rounded font-bold focus:top-2 focus:outline-2 focus:outline-white focus:outline-offset-2">Skip to main content</a>
     <Header />
-    <slot />
+    <main id="main-content" role="main">
+      <slot />
+    </main>
     <Footer />
     <ColorScript />
   </body>

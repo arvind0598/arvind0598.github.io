@@ -2,24 +2,28 @@
 import config from "../config.ts";
 import * as content from "../content/header.md";
 import HeaderLink from "./HeaderLink.astro";
+
+const headerLinkClasses = "motion-safe:hover:rotate-12 motion-safe:hover:scale-105 p-2";
 ---
 
 <header
+  role="banner"
   class="flex flex-col items-center justify-between p-8 text-center font-sans"
 >
   <h1 class="text-6xl">{content.frontmatter.title}</h1>
-  <h2 class="text-3xl font-light text-stone-600 dark:text-stone-400">
+  <h2 class="text-3xl font-light text-stone-700 dark:text-stone-300">
     {content.frontmatter.subtitle}
   </h2>
 </header>
-<nav class="flex justify-center items-center space-x-4 text-xl mb-8">
+<nav role="navigation" aria-label="Social media links and site options" class="flex justify-center items-center space-x-4 text-xl mb-8">
   <!-- <HeaderLink href="/"> home </HeaderLink> -->
   <!-- <HeaderLink href="/posts">posts</HeaderLink> -->
   <!-- <HeaderLink href="/">etc</HeaderLink> -->
   <HeaderLink
     href={config.linkedinLink}
-    class="hover:rotate-12 hover:scale-105 p-2"
+    class={headerLinkClasses}
     target="_blank"
+    aria-label="Connect with me on LinkedIn (opens in new tab)"
   >
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -31,6 +35,8 @@ import HeaderLink from "./HeaderLink.astro";
       stroke-width="2"
       stroke-linecap="round"
       stroke-linejoin="round"
+      role="img"
+      aria-hidden="true"
     >
       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
       <path d="M8 11v5"></path>
@@ -41,7 +47,7 @@ import HeaderLink from "./HeaderLink.astro";
       ></path>
     </svg>
   </HeaderLink>
-  <HeaderLink href={config.email} class="hover:rotate-12 hover:scale-105 p-2">
+  <HeaderLink href={config.email} class="motion-safe:hover:rotate-12 motion-safe:hover:scale-105 p-2" aria-label="Send me an email">
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="24"
@@ -52,6 +58,8 @@ import HeaderLink from "./HeaderLink.astro";
       stroke-width="2"
       stroke-linecap="round"
       stroke-linejoin="round"
+      role="img"
+      aria-hidden="true"
     >
       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
       <path
@@ -62,8 +70,9 @@ import HeaderLink from "./HeaderLink.astro";
   </HeaderLink>
   <HeaderLink
     href={config.resumeLink}
-    class="hover:rotate-12 hover:scale-105 p-2"
+    class={headerLinkClasses}
     target="_blank"
+    aria-label="Download my resume (PDF opens in new tab)"
   >
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -76,6 +85,8 @@ import HeaderLink from "./HeaderLink.astro";
       stroke-linecap="round"
       stroke-linejoin="round"
       class="icon icon-tabler icons-tabler-outline icon-tabler-file-cv"
+      role="img"
+      aria-hidden="true"
     >
       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
       <path d="M14 3v4a1 1 0 0 0 1 1h4"></path>
@@ -86,11 +97,13 @@ import HeaderLink from "./HeaderLink.astro";
       <path d="M13 11l1.5 6l1.5 -6"></path>
     </svg>
   </HeaderLink>
-  <div>
+  <div role="group" aria-label="Theme selection">
     <button
       type="button"
-      class="cursor-pointer transition-all duration-100 dark:hidden block text-stone-800 rounded-full bg-stone-200 hover:bg-stone-300 focus:outline-hidden focus:bg-stone-200"
+      class="cursor-pointer motion-safe:transition-all motion-safe:duration-100 dark:hidden block text-stone-800 rounded-full bg-stone-200 hover:bg-stone-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
       id="dark-mode-button"
+      aria-label="Switch to dark theme"
+      aria-pressed="false"
     >
       <span
         class="group inline-flex shrink-0 justify-center items-center size-9"
@@ -106,6 +119,8 @@ import HeaderLink from "./HeaderLink.astro";
           stroke-width="2"
           stroke-linecap="round"
           stroke-linejoin="round"
+          role="img"
+          aria-hidden="true"
         >
           <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
         </svg>
@@ -113,8 +128,10 @@ import HeaderLink from "./HeaderLink.astro";
     </button>
     <button
       type="button"
-      class="cursor-pointer transition-all duration-100 dark:block hidden text-stone-800 rounded-full bg-stone-200 hover:bg-stone-300 focus:outline-hidden focus:bg-stone-200"
+      class="cursor-pointer motion-safe:transition-all motion-safe:duration-100 dark:block hidden text-stone-800 rounded-full bg-stone-200 hover:bg-stone-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
       id="light-mode-button"
+      aria-label="Switch to light theme"
+      aria-pressed="false"
     >
       <span
         class="group inline-flex shrink-0 justify-center items-center size-9"
@@ -130,6 +147,8 @@ import HeaderLink from "./HeaderLink.astro";
           stroke-width="2"
           stroke-linecap="round"
           stroke-linejoin="round"
+          role="img"
+          aria-hidden="true"
         >
           <circle cx="12" cy="12" r="4"></circle>
           <path d="M12 2v2"></path>
@@ -150,31 +169,51 @@ import HeaderLink from "./HeaderLink.astro";
   const html = document.documentElement;
 
   const setColorScheme = (isDark: boolean) => {
+    const darkModeButton = document.getElementById("dark-mode-button");
+    const lightModeButton = document.getElementById("light-mode-button");
+    
     if (isDark) {
       html.classList.add("dark");
       localStorage.setItem("hs_theme", "dark");
+      if (darkModeButton) darkModeButton.setAttribute("aria-pressed", "true");
+      if (lightModeButton) lightModeButton.setAttribute("aria-pressed", "false");
     } else {
       html.classList.remove("dark");
       localStorage.setItem("hs_theme", "light");
+      if (darkModeButton) darkModeButton.setAttribute("aria-pressed", "false");
+      if (lightModeButton) lightModeButton.setAttribute("aria-pressed", "true");
+    }
+  };
+
+  // Initialize proper ARIA states on page load
+  const initializeThemeState = () => {
+    const isDark = html.classList.contains("dark");
+    const darkModeButton = document.getElementById("dark-mode-button");
+    const lightModeButton = document.getElementById("light-mode-button");
+    
+    if (isDark) {
+      if (darkModeButton) darkModeButton.setAttribute("aria-pressed", "true");
+      if (lightModeButton) lightModeButton.setAttribute("aria-pressed", "false");
+    } else {
+      if (darkModeButton) darkModeButton.setAttribute("aria-pressed", "false");
+      if (lightModeButton) lightModeButton.setAttribute("aria-pressed", "true");
     }
   };
 
   const darkModeButton = document.getElementById("dark-mode-button");
   if (darkModeButton) {
-    console.log("Dark mode button found");
     darkModeButton.addEventListener("click", () => {
-      console.log("Dark mode button clicked");
       setColorScheme(true);
     });
   }
 
   const lightModeButton = document.getElementById("light-mode-button");
   if (lightModeButton) {
-    console.log("Light mode button found");
     lightModeButton.addEventListener("click", () => {
-      console.log("Light mode button clicked");
-
       setColorScheme(false);
     });
   }
+
+  // Initialize theme state when page loads
+  initializeThemeState();
 </script>
