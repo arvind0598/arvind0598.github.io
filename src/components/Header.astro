@@ -3,7 +3,8 @@ import config from "../config.ts";
 import * as content from "../content/header.md";
 import HeaderLink from "./HeaderLink.astro";
 
-const headerLinkClasses = "motion-safe:hover:rotate-12 motion-safe:hover:scale-105 p-2";
+const headerLinkClasses =
+  "motion-safe:hover:rotate-12 motion-safe:hover:scale-105 p-2";
 ---
 
 <header
@@ -15,7 +16,11 @@ const headerLinkClasses = "motion-safe:hover:rotate-12 motion-safe:hover:scale-1
     {content.frontmatter.subtitle}
   </h2>
 </header>
-<nav role="navigation" aria-label="Social media links and site options" class="flex justify-center items-center space-x-4 text-xl mb-8">
+<nav
+  role="navigation"
+  aria-label="Social media links and site options"
+  class="mb-8 flex items-center justify-center space-x-4 text-xl"
+>
   <!-- <HeaderLink href="/"> home </HeaderLink> -->
   <!-- <HeaderLink href="/posts">posts</HeaderLink> -->
   <!-- <HeaderLink href="/">etc</HeaderLink> -->
@@ -47,7 +52,11 @@ const headerLinkClasses = "motion-safe:hover:rotate-12 motion-safe:hover:scale-1
       ></path>
     </svg>
   </HeaderLink>
-  <HeaderLink href={config.email} class="motion-safe:hover:rotate-12 motion-safe:hover:scale-105 p-2" aria-label="Send me an email">
+  <HeaderLink
+    href={config.email}
+    class="p-2 motion-safe:hover:scale-105 motion-safe:hover:rotate-12"
+    aria-label="Send me an email"
+  >
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="24"
@@ -100,16 +109,16 @@ const headerLinkClasses = "motion-safe:hover:rotate-12 motion-safe:hover:scale-1
   <div role="group" aria-label="Theme selection">
     <button
       type="button"
-      class="cursor-pointer motion-safe:transition-all motion-safe:duration-100 dark:hidden block text-stone-800 rounded-full bg-stone-200 hover:bg-stone-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+      class="block cursor-pointer rounded-full bg-stone-200 text-stone-800 hover:bg-stone-300 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none motion-safe:transition-all motion-safe:duration-100 dark:hidden"
       id="dark-mode-button"
       aria-label="Switch to dark theme"
       aria-pressed="false"
     >
       <span
-        class="group inline-flex shrink-0 justify-center items-center size-9"
+        class="group inline-flex size-9 shrink-0 items-center justify-center"
       >
         <svg
-          class="shrink-0 size-4"
+          class="size-4 shrink-0"
           xmlns="http://www.w3.org/2000/svg"
           width="24"
           height="24"
@@ -128,16 +137,16 @@ const headerLinkClasses = "motion-safe:hover:rotate-12 motion-safe:hover:scale-1
     </button>
     <button
       type="button"
-      class="cursor-pointer motion-safe:transition-all motion-safe:duration-100 dark:block hidden text-stone-800 rounded-full bg-stone-200 hover:bg-stone-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+      class="hidden cursor-pointer rounded-full bg-stone-200 text-stone-800 hover:bg-stone-300 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none motion-safe:transition-all motion-safe:duration-100 dark:block"
       id="light-mode-button"
       aria-label="Switch to light theme"
       aria-pressed="false"
     >
       <span
-        class="group inline-flex shrink-0 justify-center items-center size-9"
+        class="group inline-flex size-9 shrink-0 items-center justify-center"
       >
         <svg
-          class="shrink-0 size-4"
+          class="size-4 shrink-0"
           xmlns="http://www.w3.org/2000/svg"
           width="24"
           height="24"
@@ -171,12 +180,13 @@ const headerLinkClasses = "motion-safe:hover:rotate-12 motion-safe:hover:scale-1
   const setColorScheme = (isDark: boolean) => {
     const darkModeButton = document.getElementById("dark-mode-button");
     const lightModeButton = document.getElementById("light-mode-button");
-    
+
     if (isDark) {
       html.classList.add("dark");
       localStorage.setItem("hs_theme", "dark");
       if (darkModeButton) darkModeButton.setAttribute("aria-pressed", "true");
-      if (lightModeButton) lightModeButton.setAttribute("aria-pressed", "false");
+      if (lightModeButton)
+        lightModeButton.setAttribute("aria-pressed", "false");
     } else {
       html.classList.remove("dark");
       localStorage.setItem("hs_theme", "light");
@@ -190,10 +200,11 @@ const headerLinkClasses = "motion-safe:hover:rotate-12 motion-safe:hover:scale-1
     const isDark = html.classList.contains("dark");
     const darkModeButton = document.getElementById("dark-mode-button");
     const lightModeButton = document.getElementById("light-mode-button");
-    
+
     if (isDark) {
       if (darkModeButton) darkModeButton.setAttribute("aria-pressed", "true");
-      if (lightModeButton) lightModeButton.setAttribute("aria-pressed", "false");
+      if (lightModeButton)
+        lightModeButton.setAttribute("aria-pressed", "false");
     } else {
       if (darkModeButton) darkModeButton.setAttribute("aria-pressed", "false");
       if (lightModeButton) lightModeButton.setAttribute("aria-pressed", "true");
