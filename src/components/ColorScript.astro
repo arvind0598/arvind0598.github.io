@@ -5,32 +5,58 @@
     return colors[Math.floor(Math.random() * colors.length)];
   }
 
-  function setRandomLinkColor() {
+  function setRandomLinkColors() {
     Array.from(document.getElementsByTagName("a")).forEach((el) => {
-      const color = getRandomColor();
-      el.style.textDecorationColor = color;
+      const baseColor = getRandomColor();
+      const hoverColor = getRandomColor();
+
+      // Set the base color and hover color
+      el.style.color = baseColor;
+      el.style.textDecorationColor = baseColor;
+
+      // Store the hover color and text content
+      el.dataset.hoverColor = hoverColor;
+      el.dataset.text = el.textContent;
+
+      // Add the gradient class
+      el.classList.add("gradient-link");
     });
   }
 
-  function updateSingleLinkColor(link) {
-    link.style.color = link.style.textDecorationColor;
+  function updateSingleElementColors(element) {
+    const baseColor = getRandomColor();
+    const hoverColor = getRandomColor();
+
+    element.style.color = baseColor;
+    element.style.textDecorationColor = baseColor;
+    element.dataset.hoverColor = hoverColor;
+    element.dataset.text = element.textContent;
+    element.classList.add("gradient-link");
   }
 
   function setColorHoverListener() {
-    Array.from(document.querySelectorAll("a, button")).forEach((el) => {
-      el.addEventListener("mouseover", setRandomLinkColor);
+    Array.from(document.querySelectorAll("a")).forEach((el) => {
       el.addEventListener("mouseover", () => {
-        updateSingleLinkColor(el);
+        // Update all other links when hovering over one
+        setRandomLinkColors();
+        // Update the current element with new colors
+        updateSingleElementColors(el);
+
+        // Set the hover color for the pseudo-element
+        if (el.dataset.hoverColor) {
+          el.style.setProperty("--hover-color", el.dataset.hoverColor);
+        }
       });
 
       el.addEventListener("mouseout", () => {
-        el.style.color = "";
+        // Keep the colors as they are
       });
     });
   }
 
+  // Initialize on page load
   (function () {
-    setRandomLinkColor();
+    setRandomLinkColors();
     setColorHoverListener();
   })();
 </script>

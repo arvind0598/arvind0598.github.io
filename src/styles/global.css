@@ -7,3 +7,29 @@
 }
 
 @custom-variant dark (&:where(.dark, .dark *));
+.gradient-link {
+  position: relative;
+  display: inline-block;
+  transition: color 300ms ease;
+  text-decoration: underline;
+}
+
+.gradient-link::before {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  color: var(--hover-color, #3b82f6);
+  text-decoration: underline;
+  text-decoration-color: var(--hover-color, #3b82f6);
+  overflow: hidden;
+  white-space: nowrap;
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 300ms ease;
+}
+
+.gradient-link:hover::before {
+  clip-path: inset(0 0 0 0);
+}
