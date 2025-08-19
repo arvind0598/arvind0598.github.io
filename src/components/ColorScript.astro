@@ -1,8 +1,21 @@
 <script is:inline>
-  let colors = ["#24d05a", "#eb4888", "#10a2f5", "#e9bc3f"];
+  let colors = [
+    "text-red-700 decoration-red-700 dark:text-red-400 dark:decoration-red-400",
+    "text-blue-700 decoration-blue-700 dark:text-blue-400 dark:decoration-blue-400",
+    "text-amber-700 decoration-amber-700 dark:text-amber-400 dark:decoration-amber-400",
+    "text-pink-700 decoration-pink-700 dark:text-pink-400 dark:decoration-pink-400",
+    "text-emerald-700 decoration-emerald-700 dark:text-emerald-400 dark:decoration-emerald-400",
+  ];
 
   function getRandomColor() {
     return colors[Math.floor(Math.random() * colors.length)];
+  }
+
+  function removeColorClasses(element) {
+    colors.forEach((colorString) => {
+      const classes = colorString.split(" ");
+      element.classList.remove(...classes);
+    });
   }
 
   function setRandomLinkColors() {
@@ -10,51 +23,47 @@
       const baseColor = getRandomColor();
       const hoverColor = getRandomColor();
 
-      // Set the base color and hover color
-      el.style.color = baseColor;
-      el.style.textDecorationColor = baseColor;
+      removeColorClasses(el);
 
-      // Store the hover color and text content
+      el.classList.add(...baseColor.split(" "));
+
       el.dataset.hoverColor = hoverColor;
+      el.dataset.baseColor = baseColor;
       el.dataset.text = el.textContent;
-
-      // Add the gradient class
       el.classList.add("gradient-link");
     });
-  }
-
-  function updateSingleElementColors(element) {
-    const baseColor = getRandomColor();
-    const hoverColor = getRandomColor();
-
-    element.style.color = baseColor;
-    element.style.textDecorationColor = baseColor;
-    element.dataset.hoverColor = hoverColor;
-    element.dataset.text = element.textContent;
-    element.classList.add("gradient-link");
   }
 
   function setColorHoverListener() {
     Array.from(document.querySelectorAll("a")).forEach((el) => {
       el.addEventListener("mouseover", () => {
-        // Update all other links when hovering over one
-        setRandomLinkColors();
-        // Update the current element with new colors
-        updateSingleElementColors(el);
+        Array.from(document.getElementsByTagName("a")).forEach((otherEl) => {
+          if (otherEl !== el) {
+            const newColor = getRandomColor();
+            const newHoverColor = getRandomColor();
 
-        // Set the hover color for the pseudo-element
+            removeColorClasses(otherEl);
+            otherEl.classList.add(...newColor.split(" "));
+            otherEl.dataset.baseColor = newColor;
+            otherEl.dataset.hoverColor = newHoverColor;
+          }
+        });
+
         if (el.dataset.hoverColor) {
-          el.style.setProperty("--hover-color", el.dataset.hoverColor);
+          removeColorClasses(el);
+          el.classList.add(...el.dataset.hoverColor.split(" "));
         }
       });
 
       el.addEventListener("mouseout", () => {
-        // Keep the colors as they are
+        if (el.dataset.baseColor) {
+          removeColorClasses(el);
+          el.classList.add(...el.dataset.baseColor.split(" "));
+        }
       });
     });
   }
 
-  // Initialize on page load
   (function () {
     setRandomLinkColors();
     setColorHoverListener();
