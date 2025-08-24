@@ -5,14 +5,14 @@
   font-family: "Oswald", Arial, sans-serif;
 }
 
-.font-source-serif {
-  font-family: "Source Serif 4", "Times New Roman", serif;
+.font-ibm-plex-serif {
+  font-family: "IBM Plex Serif", "Times New Roman", serif;
 }
 
 @theme {
   /* Use the actual generated font names */
   --font-sans: "Oswald", "Oswald fallback", sans-serif;
-  --font-serif: "Source Serif 4", "Source Serif 4 fallback", serif;
+  --font-serif: "IBM Plex Serif", "IBM Plex Serif fallback", serif;
 }
 
 @custom-variant dark (&:where(.dark, .dark *));
