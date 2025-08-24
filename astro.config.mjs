@@ -3,9 +3,9 @@ import mdx from "@astrojs/mdx";
 import playformInline from "@playform/inline";
 import tailwindcss from "@tailwindcss/vite";
 import compress from "astro-compress";
-import { defineConfig } from "astro/config";
-
 import compressor from "astro-compressor";
+import { defineConfig } from "astro/config";
+import { FontaineTransform } from "fontaine";
 
 export default defineConfig({
   site: "https://www.arvindsuresh.in",
@@ -16,6 +16,14 @@ export default defineConfig({
     compressor({ gzip: true, brotli: true }),
   ],
   vite: {
-    plugins: [tailwindcss()],
+    plugins: [
+      tailwindcss(),
+      FontaineTransform.vite({
+        fallbacks: ["Arial", "Roboto", "Times New Roman"],
+        resolvePath: (id) => {
+          return new URL(`./public${id}`, import.meta.url);
+        },
+      }),
+    ],
   },
 });
