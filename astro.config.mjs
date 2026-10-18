@@ -1,6 +1,5 @@
 // astro.config.mjs
 import mdx from "@astrojs/mdx";
-import branchwork from "@branchwork/astro";
 import playformInline from "@playform/inline";
 import tailwindcss from "@tailwindcss/vite";
 import compress from "astro-compress";
@@ -13,12 +12,6 @@ export default defineConfig({
   compressHTML: true,
   integrations: [
     mdx(),
-    branchwork({
-      content: "./blog",
-      base: "/blog",
-      siteName: "Arvind Suresh",
-      layout: "./src/layouts/BlogLayout.astro",
-    }),
     compress(),
     playformInline({ Beasties: { pruneSource: false } }),
     compressor({ gzip: true, brotli: true }),
