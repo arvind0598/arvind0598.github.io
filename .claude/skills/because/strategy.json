@@ -1,0 +1,60 @@
+{
+  "id": "socratic",
+  "name": "Socratic questioning",
+  "description": "Paul and Elder's question types, trimmed to five: clarify, reasons, evidence, other views and implications.",
+  "kinds": [
+    {
+      "id": "clarify",
+      "name": "Clarify",
+      "label": "What do you mean?",
+      "hint": "Define a term or narrow the claim.",
+      "colour": "#6a4bb3",
+      "dark": "#b49cf0",
+      "aliases": [
+        "clarification"
+      ]
+    },
+    {
+      "id": "why",
+      "name": "Why",
+      "label": "Why?",
+      "hint": "The cause or reasoning behind it.",
+      "colour": "#1f6fb2",
+      "dark": "#79b4ea",
+      "aliases": [
+        "reason"
+      ]
+    },
+    {
+      "id": "evidence",
+      "name": "Evidence",
+      "label": "What's the evidence?",
+      "hint": "Data, a study or a source.",
+      "colour": "#2f7d4a",
+      "dark": "#7fcf95"
+    },
+    {
+      "id": "whynot",
+      "name": "Why not",
+      "label": "Why not?",
+      "hint": "The obvious objection or alternative.",
+      "colour": "#b2452f",
+      "dark": "#ef8f7a",
+      "aliases": [
+        "objection",
+        "counter"
+      ]
+    },
+    {
+      "id": "sowhat",
+      "name": "So what",
+      "label": "So what?",
+      "hint": "The consequence.",
+      "colour": "#a2680f",
+      "dark": "#e5b45c",
+      "aliases": [
+        "implication"
+      ]
+    }
+  ]
+}
