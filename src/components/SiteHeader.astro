@@ -1,0 +1,53 @@
+---
+interface Props {
+  active?: "home" | "blog";
+  /** Full-width bar with a bottom border, for the full-screen idea pages. */
+  wide?: boolean;
+}
+
+const { active, wide = false } = Astro.props;
+const links = [
+  { key: "home", label: "home", href: "/" },
+  { key: "blog", label: "blog", href: "/blog/" },
+];
+---
+
+<header
+  role="banner"
+  class:list={[
+    "mx-auto flex w-full items-baseline justify-between px-6",
+    wide
+      ? "border-b border-stone-300 py-4 max-md:py-3 dark:border-stone-700"
+      : "max-w-3xl pt-10",
+  ]}
+>
+  <a
+    href="/"
+    class:list={[
+      "text-xl hover:text-stone-600 dark:hover:text-stone-300",
+      wide && "max-md:text-lg",
+    ]}
+  >
+    Arvind Suresh
+  </a>
+  <nav
+    aria-label="Site"
+    class:list={["flex gap-7 text-base", wide && "max-md:gap-5 max-md:text-[15px]"]}
+  >
+    {
+      links.map((link) => (
+        <a
+          href={link.href}
+          aria-current={active === link.key ? "page" : undefined}
+          class:list={[
+            "underline-offset-[6px] hover:underline",
+            active === link.key &&
+              "text-accent underline decoration-1 dark:text-accent-dark",
+          ]}
+        >
+          {link.label}
+        </a>
+      ))
+    }
+  </nav>
+</header>

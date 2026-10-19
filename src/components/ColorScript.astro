@@ -19,7 +19,7 @@
   }
 
   function setRandomLinkColors() {
-    Array.from(document.getElementsByTagName("a")).forEach((el) => {
+    Array.from(document.querySelectorAll("main a")).forEach((el) => {
       const baseColor = getRandomColor();
       const hoverColor = getRandomColor();
 
@@ -37,7 +37,7 @@
   function setColorHoverListener() {
     Array.from(document.querySelectorAll("a")).forEach((el) => {
       el.addEventListener("mouseover", () => {
-        Array.from(document.getElementsByTagName("a")).forEach((otherEl) => {
+        Array.from(document.querySelectorAll("main a")).forEach((otherEl) => {
           if (otherEl !== el) {
             const newColor = getRandomColor();
             const newHoverColor = getRandomColor();

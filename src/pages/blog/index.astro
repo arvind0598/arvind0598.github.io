@@ -1,0 +1,63 @@
+---
+import SectionLabel from "../../components/SectionLabel.astro";
+import BlogLayout from "../../layouts/BlogLayout.astro";
+/// <reference types="@because-dev/astro/virtual" />
+import { renderInline } from "@because-dev/core";
+import { posts } from "virtual:because/data";
+import { formatDate } from "../../lib/blog.ts";
+
+// Post titles cycle through these colours.
+const titleColors = [
+  "text-accent decoration-accent/60 dark:text-accent-dark dark:decoration-accent-dark/60",
+  "text-amber-700 decoration-amber-700/60 dark:text-amber-400 dark:decoration-amber-400/60",
+  "text-teal-700 decoration-teal-700/60 dark:text-teal-400 dark:decoration-teal-400/60",
+];
+---
+
+<BlogLayout title="Blog · Arvind Suresh" description="Short ideas joined by questions.">
+  <p class="font-mono text-sm text-stone-500 dark:text-stone-400" aria-hidden="true">//</p>
+  <h1 class="mt-1 text-4xl">Blog</h1>
+  <p class="mt-4 max-w-xl text-lg leading-[1.78] text-stone-700 dark:text-stone-300">
+    I want to write in short ideas joined by questions, not in long articles.
+    <a
+      href="/blog/why-because/"
+      class="text-accent underline decoration-1 underline-offset-4 dark:text-accent-dark">Because</a
+    > is the tool I'm building to do that, and this blog is its first home.
+  </p>
+
+  <section class="mt-14">
+    <SectionLabel label="Main posts" />
+    <ol class="mt-2">
+      {
+        posts.map((post, i) => (
+          <li class="py-5">
+            <div class="flex items-baseline justify-between font-mono text-xs text-stone-500 dark:text-stone-400">
+              {post.date && <span>{formatDate(post.date)}</span>}
+              <span class="ml-auto">{post.ideaCount} ideas</span>
+            </div>
+            <h3 class="mt-1 text-xl">
+              <a
+                href={post.href}
+                class={`underline decoration-1 underline-offset-4 ${titleColors[i % titleColors.length]}`}
+              >
+                {post.title}
+              </a>
+            </h3>
+            <p class="mt-1 max-w-xl text-lg leading-[1.78] text-stone-600 dark:text-stone-400" set:html={renderInline(post.teaser ?? post.summary)} />
+          </li>
+        ))
+      }
+    </ol>
+  </section>
+
+  <section class="mt-10">
+    <SectionLabel label="All ideas" />
+    <a
+      href="/blog/ideas/"
+      class="mt-4 inline-flex items-center gap-2 text-lg text-blue-700 hover:underline dark:text-blue-400"
+    >
+      Browse the complete collection of ideas, across all posts.
+      <span aria-hidden="true">→</span>
+    </a>
+  </section>
+</BlogLayout>

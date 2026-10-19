@@ -13,6 +13,15 @@
   /* Use the actual generated font names */
   --font-sans: "Oswald", "Oswald fallback", sans-serif;
   --font-serif: "IBM Plex Serif", "IBM Plex Serif fallback", serif;
+  --font-mono: "IBM Plex Mono", "IBM Plex Mono fallback", ui-monospace, Menlo, monospace;
+
+  /* warm off-white page background, shared by the homepage and the blog */
+  --color-paper: #f5f3ee;
+  --color-accent: #b0186b;
+  --color-accent-dark: #f27bb8;
+
+  /* stone-500, a touch darker so small grey text passes 4.5:1 contrast on paper */
+  --color-stone-500: #736b65;
 }
 
 @custom-variant dark (&:where(.dark, .dark *));
@@ -41,4 +50,44 @@
 
 .gradient-link:hover::before {
   clip-path: inset(0 0 0 0);
+}
+
+/* Because (the idea pages): fonts and palette from the rest of the site */
+:root {
+  --bc-text: var(--font-serif);
+  --bc-display: var(--font-serif);
+  --bc-mono: var(--font-mono);
+  --bc-board: var(--color-paper);
+  --bc-dot: #ddd8cf;
+  --bc-card: #fbfaf7;
+  --bc-ink: var(--color-stone-900);
+  --bc-muted: var(--color-stone-500);
+  --bc-line: var(--color-stone-300);
+  --bc-accent: var(--color-accent);
+  --bc-bar: rgb(245 243 238 / 0.93);
+  --bc-q-clarify: #6d4bb0;
+  --bc-q-why: var(--color-blue-700);
+  --bc-q-whynot: var(--color-accent);
+  --bc-q-evidence: var(--color-teal-700);
+  --bc-q-sowhat: var(--color-amber-700);
+  --bc-radius: 4px;
+  --bc-shadow: 0 1px 2px rgb(0 0 0 / 0.06);
+  color-scheme: light;
+}
+
+:root.dark {
+  --bc-board: var(--color-stone-900);
+  --bc-dot: #34302c;
+  --bc-card: #24201e;
+  --bc-ink: var(--color-stone-100);
+  --bc-muted: #bdb7b1; /* between stone-300 and -400: readable grey on the dark board */
+  --bc-line: var(--color-stone-700);
+  --bc-accent: var(--color-accent-dark);
+  --bc-bar: rgb(28 25 23 / 0.93);
+  --bc-q-clarify: #b49cf0;
+  --bc-q-why: var(--color-blue-400);
+  --bc-q-whynot: var(--color-accent-dark);
+  --bc-q-evidence: var(--color-teal-400);
+  --bc-q-sowhat: var(--color-amber-400);
+  color-scheme: dark;
 }

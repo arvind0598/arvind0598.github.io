@@ -1,9 +1,9 @@
 ---
 import ColorScript from "../components/ColorScript.astro";
-import Footer from "../components/Footer.astro";
 import type { HeadProps } from "../components/Head.astro";
 import Head from "../components/Head.astro";
-import Header from "../components/Header.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import SiteHeader from "../components/SiteHeader.astro";
 
 type Props = HeadProps;
 
@@ -21,13 +21,17 @@ const { title, description, image, publishDate, author, type } = Astro.props;
     type={type}
   />
   <body
-    class="align-center flex flex-col items-center bg-stone-100 font-serif text-lg text-stone-900 transition-colors duration-75 selection:bg-stone-300/50 dark:bg-stone-900 dark:text-stone-100 dark:selection:bg-stone-700/50"
+    class="flex min-h-screen flex-col bg-paper font-serif text-lg text-stone-900 transition-colors duration-75 selection:bg-stone-300/50 dark:bg-stone-900 dark:text-stone-100 dark:selection:bg-stone-700/50"
   >
-    <Header />
-    <main id="main-content" role="main">
+    <SiteHeader active="home" />
+    <main
+      id="main-content"
+      role="main"
+      class="mx-auto w-full max-w-3xl flex-1 px-6 pt-24"
+    >
       <slot />
     </main>
-    <Footer />
+    <SiteFooter />
     <ColorScript />
   </body>
 </html>

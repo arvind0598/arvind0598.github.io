@@ -1,0 +1,512 @@
+---
+// Because's idea pages (see `shell` in astro.config.mjs). On phones the map and
+// the article are separate full-screen views; on wider screens the map always
+// shows and the article is a sidebar beside it, open by default. A floating button
+// switches views (opens and closes the sidebar). Without JavaScript only the article renders.
+import ViewInit from "@because-dev/astro/components/ViewInit.astro";
+import DarkMode from "../components/DarkMode.astro";
+import Fonts from "../components/Fonts.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+  /** The idea's title. */
+  heading?: string;
+  description?: string;
+  /** Data attributes that tell Because each screen size's default view. */
+  viewAttrs?: Record<string, string>;
+}
+
+const { title, heading = title, viewAttrs } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+    <link rel="icon" href="/favicon.ico" />
+    <title>{title}</title>
+    <slot name="head" />
+    <Fonts />
+    <DarkMode />
+  </head>
+  <body
+    class="flex h-dvh flex-col bg-paper font-serif text-stone-900 selection:bg-stone-300/50 dark:bg-stone-900 dark:text-stone-100 dark:selection:bg-stone-700/50"
+  >
+    <SiteHeader active="blog" wide />
+    <main id="main-content" class="bc-shell flex min-h-0 flex-1" {...viewAttrs}>
+      <ViewInit />
+      <script is:inline>
+        // Because adds this when the map mounts; adding it now keeps the sidebar from jumping into place.
+        document.currentScript.parentElement.classList.add("has-map");
+      </script>
+      <!-- The article's own h1 is hidden in map view, so keep one for screen readers. -->
+      <h1 class="map-heading sr-only">{heading}</h1>
+      <slot name="map" />
+      <aside
+        class="idea-side flex flex-col overflow-y-auto"
+        aria-label="Idea text"
+      >
+        <div class="flex-1"><slot /></div>
+        <SiteFooter compact />
+      </aside>
+    </main>
+    <button
+      type="button"
+      class="view-toggle"
+      data-because-view-toggle
+      hidden
+    ></button>
+  </body>
+</html>
+
+<style is:global>
+  /* Map: quiet like the rest of the site. Lines in one colour; only question text keeps its hue. */
+  .bc-map {
+    --bc-radius: 3px;
+    --bc-shadow: none;
+    --bc-card-width: 210px;
+    --bc-focus-width: 260px;
+  }
+  .bc-map svg.bc-edges > path {
+    stroke-width: 1.3;
+    opacity: 0.55;
+  }
+  .bc-map svg.bc-edges > path.trail {
+    stroke-width: 2;
+    opacity: 1;
+  }
+  .bc-map .bc-qpill,
+  .bc-map .bc-qnode {
+    border-color: color-mix(in srgb, var(--qc) 55%, transparent);
+    font-style: italic;
+  }
+  .bc-map .bc-node {
+    font-size: 15px;
+    line-height: 1.5;
+  }
+  .bc-map .bc-node.focus {
+    border: 1px solid var(--bc-accent);
+    box-shadow: none;
+  }
+  .bc-map .bc-node .bc-title {
+    font-weight: 600;
+  }
+  .bc-map .bc-node .eyebrow,
+  .bc-map .bc-node .shared {
+    color: var(--bc-muted);
+  }
+  .bc-map .bc-node .shared {
+    font-size: 12px;
+  }
+  .bc-map .bc-trailbar {
+    border: 0;
+    background: none;
+    padding: 2px;
+  }
+  .bc-map .bc-trailbar a {
+    background: var(--bc-board);
+  }
+  /* Key (Because's bottom-left corner) lines up with the view switch on the right;
+     − / + sit above the switch. */
+  .bc-map {
+    --bc-controls-bottom: 84px;
+  }
+  .bc-map .bc-corner {
+    left: max(20px, env(safe-area-inset-left));
+    bottom: max(20px, env(safe-area-inset-bottom));
+  }
+  /* Key: the same round icon button as the view switch (its text stays as the accessible name). */
+  .bc-map .bc-keybtn {
+    width: 52px;
+    height: 52px;
+    padding: 0;
+    justify-content: center;
+    border: 0;
+    border-radius: 50%;
+    background: var(--bc-ink);
+    color: var(--bc-board);
+    font-size: 0;
+    box-shadow: 0 2px 8px rgb(0 0 0 / 0.2);
+  }
+  .bc-map .bc-keybtn .bc-swatches {
+    display: none;
+  }
+  .bc-map .bc-keybtn::before {
+    content: "";
+    width: 22px;
+    height: 22px;
+    background: currentColor;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' %3E%3Cpath stroke='none' d='M0 0h24v24H0z' fill='none'/%3E%3Cpath d='M19 3h-4a2 2 0 0 0 -2 2v12a4 4 0 0 0 8 0v-12a2 2 0 0 0 -2 -2' /%3E%3Cpath d='M13 7.35l-2 -2a2 2 0 0 0 -2.828 0l-2.828 2.828a2 2 0 0 0 0 2.828l9 9' /%3E%3Cpath d='M7.3 13h-2.3a2 2 0 0 0 -2 2v4a2 2 0 0 0 2 2h12' /%3E%3Cpath d='M17 17l0 .01' /%3E%3C/svg%3E") center / contain no-repeat;
+  }
+  .bc-map .bc-keybtn:hover,
+  .bc-map .bc-keybtn[aria-expanded="true"] {
+    background: var(--bc-accent);
+    color: var(--bc-board);
+  }
+  .bc-map .bc-legend {
+    left: max(20px, env(safe-area-inset-left));
+    bottom: 84px;
+    background: var(--bc-card);
+    box-shadow: 0 2px 8px rgb(0 0 0 / 0.12);
+  }
+  /* Wider screens: the legend stays open in the corner instead of behind Key. */
+  @media (min-width: 768px) {
+    .bc-map .bc-legend {
+      bottom: max(20px, env(safe-area-inset-bottom));
+    }
+    .bc-map .bc-corner {
+      top: 12px;
+      right: 12px;
+      bottom: auto;
+      left: auto;
+    }
+    /* With the sidebar open the map is too narrow for the status beside the trail. */
+    [data-because-view="article"] .bc-map .bc-status {
+      display: none;
+    }
+  }
+
+  .bc-map .bc-zoom {
+    right: max(26px, env(safe-area-inset-right));
+  }
+  .bc-map .bc-zoom button {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--bc-card);
+  }
+  .bc-map .bc-status {
+    border-color: transparent;
+    background: none;
+  }
+
+  @media (max-width: 767px) {
+    /* The map fits its width on phones and scales cards down, so set the text large and short. */
+    .bc-map {
+      --bc-card-width: 180px;
+      --bc-focus-width: 220px;
+    }
+    .bc-map .bc-node {
+      font-size: 20px;
+      line-height: 1.35;
+    }
+    .bc-map .bc-node.focus {
+      font-size: 22px;
+    }
+    .bc-map .bc-node p {
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 4;
+      overflow: hidden;
+    }
+    .bc-map .bc-qpill {
+      font-size: 17px;
+    }
+    .bc-map .bc-node .eyebrow,
+    .bc-map .bc-node .shared {
+      font-size: 14px;
+    }
+    .bc-map .bc-status {
+      display: none;
+    }
+  }
+
+  /* One view at a time, each filling the space under the header. */
+  :root {
+    --side-width: 420px;
+  }
+  @media (min-width: 768px) {
+    body {
+      overflow: hidden;
+    }
+  }
+  .bc-shell .bc-map-root {
+    display: none;
+  }
+  .idea-side {
+    flex: 1;
+    min-width: 0;
+  }
+  .bc-idea {
+    max-width: 42rem;
+    margin: 0 auto;
+  }
+  .has-map[data-because-view="map"] .bc-map-root {
+    display: block;
+    position: relative;
+    flex: 1;
+    min-width: 0;
+  }
+  .has-map[data-because-view="map"] .idea-side {
+    display: none;
+  }
+  [data-because-view="article"] .map-heading {
+    display: none;
+  }
+  /* Wider screens: "article" keeps the map and opens the text as a sidebar. */
+  @media (min-width: 768px) {
+    .has-map[data-because-view="article"] .bc-map-root {
+      display: block;
+      position: relative;
+      flex: 1;
+      min-width: 0;
+    }
+    .has-map[data-because-view="article"] .idea-side {
+      width: var(--side-width);
+      flex: none;
+      border-left: 1px solid var(--bc-line);
+    }
+  }
+
+  /* Round icon button; Because sets data-because-next to the view it opens. */
+  /* Icon only; Because's label ("Map", "Hide text"…) stays as the accessible name. */
+  .view-toggle {
+    font-size: 0;
+    position: fixed;
+    z-index: 5;
+    right: max(20px, env(safe-area-inset-right));
+    bottom: max(20px, env(safe-area-inset-bottom));
+    display: grid;
+    place-items: center;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: var(--bc-ink);
+    color: var(--bc-board);
+    box-shadow: 0 2px 8px rgb(0 0 0 / 0.2);
+    cursor: pointer;
+  }
+  .view-toggle::before {
+    content: "";
+    width: 22px;
+    height: 22px;
+    background: currentColor;
+    mask: var(--icon) center / contain no-repeat;
+  }
+  .view-toggle[data-because-next="article"] {
+    --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' %3E%3Cpath stroke='none' d='M0 0h24v24H0z' fill='none'/%3E%3Cpath d='M3 4m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z' /%3E%3Cpath d='M7 8h10' /%3E%3Cpath d='M7 12h10' /%3E%3Cpath d='M7 16h10' /%3E%3C/svg%3E");
+  }
+  .view-toggle[data-because-next="map"] {
+    --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' %3E%3Cpath stroke='none' d='M0 0h24v24H0z' fill='none'/%3E%3Cpath d='M5.931 6.936l1.275 4.249m5.607 5.609l4.251 1.275' /%3E%3Cpath d='M11.683 12.317l5.759 -5.759' /%3E%3Cpath d='M5.5 5.5m-1.5 0a1.5 1.5 0 1 0 3 0a1.5 1.5 0 1 0 -3 0' /%3E%3Cpath d='M18.5 5.5m-1.5 0a1.5 1.5 0 1 0 3 0a1.5 1.5 0 1 0 -3 0' /%3E%3Cpath d='M18.5 18.5m-1.5 0a1.5 1.5 0 1 0 3 0a1.5 1.5 0 1 0 -3 0' /%3E%3Cpath d='M8.5 15.5m-4.5 0a4.5 4.5 0 1 0 9 0a4.5 4.5 0 1 0 -9 0' /%3E%3C/svg%3E");
+  }
+  .view-toggle:hover {
+    background: var(--bc-accent);
+  }
+  /* Wider screens: the switch is a half-round tab on the sidebar's edge, at the
+     window's right edge while the sidebar is closed. */
+  @media (min-width: 768px) {
+    .bc-map {
+      --bc-controls-bottom: 20px;
+    }
+    .view-toggle {
+      top: 50%;
+      right: 0;
+      bottom: auto;
+      width: 28px;
+      height: 56px;
+      border-radius: 28px 0 0 28px;
+      transform: translateY(-50%);
+      transition: right 0.2s ease;
+      box-shadow: -2px 0 8px rgb(0 0 0 / 0.15);
+    }
+    .view-toggle::before {
+      width: 18px;
+      height: 18px;
+      margin-left: 4px;
+    }
+    .view-toggle[data-because-next="map"] {
+      right: var(--side-width);
+    }
+    .view-toggle[data-because-next="article"] {
+      --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' %3E%3Cpath stroke='none' d='M0 0h24v24H0z' fill='none'/%3E%3Cpath d='M15 6l-6 6l6 6' /%3E%3C/svg%3E");
+    }
+    .view-toggle[data-because-next="map"] {
+      --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' %3E%3Cpath stroke='none' d='M0 0h24v24H0z' fill='none'/%3E%3Cpath d='M9 6l6 6l-6 6' /%3E%3C/svg%3E");
+    }
+  }
+  .view-toggle[hidden] {
+    display: none;
+  }
+
+  .bc-idea {
+    padding: 36px 28px 16px;
+  }
+  /* Room under the footer so its theme switch scrolls clear of the round view button. */
+  .idea-side {
+    padding-bottom: 88px;
+  }
+  .bc-idea h1 {
+    margin-top: 12px;
+    font-size: 1.875rem;
+    line-height: 1.2;
+    text-wrap: balance;
+  }
+  .bc-idea .bc-meta,
+  .bc-idea .bc-trail {
+    font-family: var(--bc-mono);
+    font-size: 12px;
+    color: var(--bc-muted);
+  }
+  .bc-idea h1 + .bc-meta {
+    margin-top: 6px;
+  }
+  .bc-idea .bc-trail ol {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 6px;
+  }
+  .bc-idea .bc-trail li + li::before {
+    content: "›";
+    margin-right: 6px;
+  }
+  .bc-idea .bc-trail a {
+    color: var(--bc-muted);
+    text-decoration: none;
+  }
+  .bc-idea .bc-body {
+    margin-top: 16px;
+    font-size: 1.0625rem;
+    line-height: 1.78;
+    color: var(--color-stone-700);
+  }
+  .dark .bc-idea .bc-body {
+    color: var(--color-stone-300);
+  }
+  .bc-idea .bc-body p + p {
+    margin-top: 1em;
+  }
+  .bc-idea a {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-decoration-color: var(--bc-line);
+    text-underline-offset: 4px;
+  }
+  .bc-idea a:hover {
+    color: var(--bc-accent);
+    text-decoration-color: currentColor;
+  }
+  .bc-idea .bc-body a {
+    color: var(--bc-accent);
+    text-decoration-color: currentColor;
+  }
+
+  /* Link previews: quiet cards under the text, like the map's cards. */
+  .bc-idea .bc-previews {
+    display: grid;
+    gap: 10px;
+    margin-top: 20px;
+  }
+  .bc-idea a.bc-preview {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 12px 14px;
+    border: 1px solid var(--bc-line);
+    border-radius: 3px;
+    color: inherit;
+    text-decoration: none;
+    transition: border-color 150ms ease;
+  }
+  .bc-idea a.bc-preview:hover {
+    border-color: var(--bc-accent);
+  }
+  .bc-idea .bc-preview-text {
+    display: grid;
+    flex: 1;
+    gap: 3px;
+    min-width: 0;
+  }
+  .bc-idea .bc-preview-site {
+    font-family: var(--bc-mono);
+    font-size: 12px;
+    color: var(--bc-muted);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .bc-idea .bc-preview-title,
+  .bc-idea .bc-preview-description {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+  }
+  .bc-idea .bc-preview-title {
+    font-weight: 600;
+    line-height: 1.35;
+    color: var(--bc-ink);
+  }
+  .bc-idea a.bc-preview:hover .bc-preview-title {
+    color: var(--bc-accent);
+  }
+  .bc-idea .bc-preview-description {
+    font-size: 0.875rem;
+    line-height: 1.5;
+    color: var(--bc-muted);
+  }
+  .bc-idea .bc-preview-image {
+    order: 2;
+    flex: none;
+    width: 72px;
+    height: 72px;
+    border-radius: 3px;
+    object-fit: cover;
+    background: var(--bc-line);
+  }
+
+  /* Each question: its wording in the question's colour, then its answers. */
+  .bc-idea .bc-question,
+  .bc-idea .bc-leads-here {
+    margin-top: 28px;
+    padding-top: 20px;
+    border-top: 1px solid var(--bc-line);
+  }
+  .bc-idea .bc-question h2,
+  .bc-idea .bc-leads-here h2 {
+    font-size: 1rem;
+    font-style: italic;
+    line-height: 1.4;
+    color: var(--qc, var(--bc-muted));
+  }
+  .bc-idea .bc-answer {
+    margin-top: 12px;
+    padding-left: 14px;
+    border-left: 1px solid color-mix(in srgb, var(--qc, var(--bc-line)) 45%, transparent);
+  }
+  .bc-idea .bc-answer h3 {
+    font-size: 1.125rem;
+    line-height: 1.4;
+  }
+  .bc-idea .bc-answer p {
+    margin-top: 2px;
+    font-size: 0.9375rem;
+    line-height: 1.65;
+    color: var(--bc-muted);
+  }
+  .bc-idea .bc-leads-here li {
+    margin-top: 8px;
+  }
+  .bc-idea .bc-leads-here .bc-meta {
+    margin-left: 6px;
+  }
+  .bc-idea [data-question-type="clarify"] {
+    --qc: var(--bc-q-clarify);
+  }
+  .bc-idea [data-question-type="why"] {
+    --qc: var(--bc-q-why);
+  }
+  .bc-idea [data-question-type="whynot"] {
+    --qc: var(--bc-q-whynot);
+  }
+  .bc-idea [data-question-type="evidence"] {
+    --qc: var(--bc-q-evidence);
+  }
+  .bc-idea [data-question-type="sowhat"] {
+    --qc: var(--bc-q-sowhat);
+  }
+</style>
