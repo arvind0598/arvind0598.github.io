@@ -14,14 +14,16 @@ const titleColors = [
 ];
 ---
 
-<BlogLayout title="Blog · Arvind Suresh" description="Short ideas joined by questions.">
-  <p class="font-mono text-sm text-stone-500 dark:text-stone-400" aria-hidden="true">//</p>
-  <h1 class="mt-1 text-4xl">Blog</h1>
-  <p class="mt-4 max-w-xl text-lg leading-[1.78] text-stone-700 dark:text-stone-300">
+<BlogLayout
+  title="Blog · Arvind Suresh"
+  description="Short ideas joined by questions."
+>
+  <p class="max-w-xl text-lg leading-[1.78] text-stone-700 dark:text-stone-300">
     I want to write in short ideas joined by questions, not in long articles.
     <a
       href="/blog/why-because/"
-      class="text-accent underline decoration-1 underline-offset-4 dark:text-accent-dark">Because</a
+      class="text-accent dark:text-accent-dark underline decoration-1 underline-offset-4"
+      >Because</a
     > is the tool I'm building to do that, and this blog is its first home.
   </p>
 
@@ -43,7 +45,10 @@ const titleColors = [
                 {post.title}
               </a>
             </h3>
-            <p class="mt-1 max-w-xl text-lg leading-[1.78] text-stone-600 dark:text-stone-400" set:html={renderInline(post.teaser ?? post.summary)} />
+            <p
+              class="mt-1 max-w-xl text-lg leading-[1.78] text-stone-600 dark:text-stone-400"
+              set:html={renderInline(post.teaser ?? post.summary)}
+            />
           </li>
         ))
       }

@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "previews": {
+    "https://www.youtube.com/watch?v=vNDYUlxNIAA": {
+      "url": "https://www.youtube.com/watch?v=vNDYUlxNIAA",
+      "title": "This tool will help improve your critical thinking - Erick Wilberding",
+      "description": "TED-Ed",
+      "image": "https://i.ytimg.com/vi/vNDYUlxNIAA/hqdefault.jpg",
+      "siteName": "YouTube",
+      "status": "ok",
+      "fetchedAt": "2026-10-19T19:56:09.032Z"
+    }
+  }
+}
