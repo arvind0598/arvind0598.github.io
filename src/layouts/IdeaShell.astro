@@ -270,8 +270,10 @@ const { title, heading = title, viewAttrs } = Astro.props;
     z-index: 5;
     right: max(20px, env(safe-area-inset-right));
     bottom: max(20px, env(safe-area-inset-bottom));
-    display: grid;
-    place-items: center;
+    /* Flex, not grid: the hidden label text would take a second grid row and push the icon up. */
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 52px;
     height: 52px;
     border-radius: 50%;
