@@ -13,7 +13,8 @@
   /* Use the actual generated font names */
   --font-sans: "Oswald", "Oswald fallback", sans-serif;
   --font-serif: "IBM Plex Serif", "IBM Plex Serif fallback", serif;
-  --font-mono: "IBM Plex Mono", "IBM Plex Mono fallback", ui-monospace, Menlo, monospace;
+  --font-mono:
+    "IBM Plex Mono", "IBM Plex Mono fallback", ui-monospace, Menlo, monospace;
 
   /* warm off-white page background, shared by the homepage and the blog */
   --color-paper: #f5f3ee;

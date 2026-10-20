@@ -12,33 +12,74 @@ export const getStaticPaths = (({ paginate }) =>
   paginate(ideas, { pageSize: 20 })) satisfies GetStaticPaths;
 
 const { page } = Astro.props as { page: Page<Idea> };
-const heading = page.currentPage > 1 ? `All ideas, page ${page.currentPage}` : "All ideas";
+const heading =
+  page.currentPage > 1 ? `All ideas, page ${page.currentPage}` : "All ideas";
 ---
 
-<BlogLayout title={`${heading} · Arvind Suresh`} description="Every idea on the blog, across all posts.">
-  <p class="font-mono text-sm text-stone-500 dark:text-stone-400" aria-hidden="true">//</p>
+<BlogLayout
+  title={`${heading} · Arvind Suresh`}
+  description="Every idea on the blog, across all posts."
+>
+  <p
+    class="font-mono text-sm text-stone-500 dark:text-stone-400"
+    aria-hidden="true"
+  >
+    //
+  </p>
   <h1 class="mt-1 text-4xl">All ideas</h1>
   <p class="mt-4 text-lg text-stone-700 dark:text-stone-300">
-    Every idea, across all posts. <a href="/blog/" class="underline underline-offset-4">Back to the blog</a>.
+    Every idea, across all posts. <a
+      href="/blog/"
+      class="underline underline-offset-4">Back to the blog</a
+    >.
   </p>
   <ul class="mt-8 divide-y divide-stone-300 dark:divide-stone-700">
     {
       page.data.map((idea) => (
         <li class="py-5">
-          <a href={idea.href} class="text-xl underline decoration-1 underline-offset-4 hover:text-accent dark:hover:text-accent-dark">
+          <a
+            href={idea.href}
+            class="hover:text-accent dark:hover:text-accent-dark text-xl underline decoration-1 underline-offset-4"
+          >
             {idea.title}
           </a>
-          <p class="mt-1 text-lg leading-[1.78] text-stone-600 dark:text-stone-400" set:html={renderInline(idea.teaser ?? idea.summary)} />
+          <p
+            class="mt-1 text-lg leading-[1.78] text-stone-600 dark:text-stone-400"
+            set:html={renderInline(idea.teaser ?? idea.summary)}
+          />
         </li>
       ))
     }
   </ul>
   {
     page.lastPage > 1 && (
-      <nav aria-label="Pages" class="mt-8 flex items-center justify-between font-mono text-sm text-stone-600 dark:text-stone-400">
-        {page.url.prev ? <a href={page.url.prev} class="hover:text-accent dark:hover:text-accent-dark">← Previous</a> : <span />}
-        <span>Page {page.currentPage} of {page.lastPage}</span>
-        {page.url.next ? <a href={page.url.next} class="hover:text-accent dark:hover:text-accent-dark">Next →</a> : <span />}
+      <nav
+        aria-label="Pages"
+        class="mt-8 flex items-center justify-between font-mono text-sm text-stone-600 dark:text-stone-400"
+      >
+        {page.url.prev ? (
+          <a
+            href={page.url.prev}
+            class="hover:text-accent dark:hover:text-accent-dark"
+          >
+            ← Previous
+          </a>
+        ) : (
+          <span />
+        )}
+        <span>
+          Page {page.currentPage} of {page.lastPage}
+        </span>
+        {page.url.next ? (
+          <a
+            href={page.url.next}
+            class="hover:text-accent dark:hover:text-accent-dark"
+          >
+            Next →
+          </a>
+        ) : (
+          <span />
+        )}
       </nav>
     )
   }

@@ -32,7 +32,10 @@ const links = [
   </a>
   <nav
     aria-label="Site"
-    class:list={["flex gap-7 text-base", wide && "max-md:gap-5 max-md:text-[15px]"]}
+    class:list={[
+      "flex gap-7 text-base",
+      wide && "max-md:gap-5 max-md:text-[15px]",
+    ]}
   >
     {
       links.map((link) => (
@@ -42,7 +45,7 @@ const links = [
           class:list={[
             "underline-offset-[6px] hover:underline",
             active === link.key &&
-              "text-accent underline decoration-1 dark:text-accent-dark",
+              "text-accent dark:text-accent-dark underline decoration-1",
           ]}
         >
           {link.label}
