@@ -31,6 +31,15 @@ const { title, heading = title, viewAttrs } = Astro.props;
     <title>{title}</title>
     <slot name="head" />
     <Fonts />
+    {
+      import.meta.env.PROD && (
+        <script
+          data-goatcounter="https://arvindsuresh.goatcounter.com/count"
+          async
+          src="//gc.zgo.at/count.js"
+        />
+      )
+    }
     <DarkMode />
   </head>
   <body
