@@ -19,6 +19,8 @@ export default defineConfig({
       siteName: "Arvind Suresh",
       // src/pages/blog/index.astro is the list page
       index: false,
+      // Wraps the long-form article pages (/blog/<post>/read/); idea pages use the shell.
+      layout: "./src/layouts/BlogLayout.astro",
       shell: "./src/layouts/IdeaShell.astro",
       // Phones open on the map, wider screens on the map with the article sidebar open.
       view: { narrow: "map", wide: "article" },

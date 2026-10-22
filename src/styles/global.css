@@ -92,3 +92,123 @@
   --bc-q-sowhat: var(--color-amber-400);
   color-scheme: dark;
 }
+
+/* Because long-form article (/blog/<post>/read/): one post with every idea under it. */
+.bc-longform {
+  padding-bottom: 6rem;
+}
+.bc-longform-header h1 {
+  font-size: 2.25rem;
+  line-height: 1.2;
+  text-wrap: balance;
+}
+.bc-longform .bc-meta,
+.bc-longform-map {
+  margin-top: 8px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--bc-muted);
+}
+.bc-longform-map a {
+  color: var(--bc-accent);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.bc-toc {
+  margin-top: 2.5rem;
+  padding: 1rem 0;
+  border-top: 1px solid var(--bc-line);
+  border-bottom: 1px solid var(--bc-line);
+}
+.bc-toc h2 {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--bc-muted);
+}
+.bc-toc ol {
+  margin-top: 0.4rem;
+}
+.bc-toc ol ol {
+  margin-top: 0;
+  padding-left: 1.25rem;
+}
+.bc-toc li {
+  line-height: 1.9;
+}
+.bc-toc a {
+  color: var(--color-stone-700);
+}
+.dark .bc-toc a {
+  color: var(--color-stone-300);
+}
+.bc-toc a:hover {
+  color: var(--bc-accent);
+}
+.bc-toc-idea > a {
+  font-style: italic;
+  color: var(--bc-muted);
+}
+.bc-toc-context,
+.bc-longform-context {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: normal;
+  font-style: normal;
+  color: var(--bc-muted);
+}
+.bc-toc-context::before,
+.bc-longform-context::before {
+  content: "· ";
+}
+.bc-longform .bc-body {
+  margin-top: 1.25rem;
+  font-size: 1.0625rem;
+  line-height: 1.78;
+  color: var(--color-stone-700);
+}
+.dark .bc-longform .bc-body {
+  color: var(--color-stone-300);
+}
+.bc-longform .bc-body p + p {
+  margin-top: 1em;
+}
+.bc-longform .bc-body a {
+  color: var(--bc-accent);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+/* Questions are the headings; their colour comes from the question kind. */
+.bc-longform-question > :is(h2, h3, h4, h5, h6) {
+  margin-top: 3rem;
+  font-size: 1.5rem;
+  line-height: 1.3;
+  font-style: italic;
+  color: var(--qc, var(--bc-ink));
+  text-wrap: balance;
+}
+.bc-longform-question > :is(h3, h4, h5, h6) {
+  margin-top: 2.25rem;
+  font-size: 1.2rem;
+}
+.bc-longform-idea + .bc-longform-idea {
+  margin-top: 1.5rem;
+  padding-top: 0.25rem;
+  border-top: 1px solid var(--bc-line);
+}
+.bc-longform-ref {
+  margin-top: 1rem;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--bc-muted);
+}
+.bc-longform-ref::before {
+  content: "↑ See ";
+}
+.bc-longform-ref a {
+  color: var(--bc-accent);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}

@@ -49,6 +49,17 @@ const titleColors = [
               class="mt-1 max-w-xl text-lg leading-[1.78] text-stone-600 dark:text-stone-400"
               set:html={renderInline(post.teaser ?? post.summary)}
             />
+            {post.readHref && (
+              <a
+                href={post.readHref}
+                class="text-accent dark:text-accent-dark mt-2 inline-flex items-center gap-2 text-base"
+              >
+                <span class="underline decoration-1 underline-offset-4">
+                  Read as article
+                </span>
+                <span aria-hidden="true">→</span>
+              </a>
+            )}
           </li>
         ))
       }
