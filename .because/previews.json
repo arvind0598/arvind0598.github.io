@@ -1,6 +1,95 @@
 {
   "version": 1,
   "previews": {
+    "http://www.gerrystahl.net/teaching/winter12/Conklin_gIBIS.pdf": {
+      "url": "http://www.gerrystahl.net/teaching/winter12/Conklin_gIBIS.pdf",
+      "status": "failed",
+      "fetchedAt": "2026-10-29T20:41:33.110Z"
+    },
+    "https://arxiv.org/abs/2304.07848": {
+      "url": "https://arxiv.org/abs/2304.07848",
+      "title": "A Study of Update Request Comments in Stack Overflow Answer Posts",
+      "description": "Comments play an important role in updating Stack Overflow (SO) posts. They are used to point out a problem (e.g., obsolete answer and buggy code) in a SO answer or ask for more details about a proposed answer. We refer to this type of comment as update request comments (URCs), which may trigger an update to the answer post and thus improve its quality. In this study, we manually analyze a set of 384 sampled SO answer posts and their associated 1,221 comments to investigate the prevalence of URCs and how URCs are addressed. We find that around half of the analyzed comments are URCs. While 55.3% of URCs are addressed within 24 hours, 36.5% of URCs remain unaddressed after a year. Moreover, we find that the current community-vote mechanism could not differentiate URCs from non-URCs. Thus many URCs might not be aware by users who can address the issue or improve the answer quality. As a first step to enhance the awareness of URCs and support future research on URCs, we investigate the feasibility of URC detection by proposing a set of features extracted from different aspects of SO comments and using them to build supervised classifiers that can automatically identify URCs. Our experiments on 377 and 289 comments posted on answers to JavaScript and Python questions show that the proposed URC classifier can achieve an accuracy of 90% and an AUC of 0.96, on average.",
+      "image": "https://arxiv.org/static/browse/0.3.4/images/arxiv-logo-fb.png",
+      "siteName": "arXiv.org",
+      "status": "ok",
+      "fetchedAt": "2026-10-22T16:00:28.315Z"
+    },
+    "https://arxiv.org/pdf/2101.10250": {
+      "url": "https://arxiv.org/pdf/2101.10250",
+      "status": "failed",
+      "fetchedAt": "2026-10-29T20:41:32.598Z"
+    },
+    "https://dl.acm.org/doi/10.1145/3366423.3380300": {
+      "url": "https://dl.acm.org/doi/10.1145/3366423.3380300",
+      "title": "Quantifying Engagement with Citations on Wikipedia",
+      "description": "Tiziano Piccardi, Miriam Redi, Giovanni Colavizza et al. · Proceedings of The Web Conference 2020",
+      "siteName": "ACM",
+      "status": "ok",
+      "fetchedAt": "2026-10-29T20:41:32.598Z"
+    },
+    "https://link.springer.com/article/10.1007/s10648-018-9434-x": {
+      "url": "https://link.springer.com/article/10.1007/s10648-018-9434-x",
+      "title": "Inducing Self-Explanation: a Meta-Analysis - Educational Psychology Review",
+      "description": "Self-explanation is a process by which learners generate inferences about causal connections or conceptual relationships. A meta-analysis was conducted on research that investigated learning outcomes for participants who received self-explanation prompts while studying or solving problems. Our systematic search of relevant bibliographic databases identified 69 effect sizes (from 64 research reports) which met certain inclusion criteria. The overall weighted mean effect size using a random effects model was g = .55. We coded and analyzed 20 moderator variables including type of learning task (e.g., solving problems, studying worked problems, and studying text), subject area, level of education, type of inducement, and treatment duration. We found that self-explanation prompts are a potentially powerful intervention across a range of instructional conditions. Due to the limitations of relying on instructor-scripted prompts, we recommend that future research explore computer-generation of self-explanation prompts.",
+      "image": "https://media.springernature.com/full/springer-static/cover-hires/journal/10648",
+      "siteName": "SpringerLink",
+      "status": "ok",
+      "fetchedAt": "2026-10-22T16:00:28.844Z"
+    },
+    "https://oro.open.ac.uk/56455/": {
+      "url": "https://oro.open.ac.uk/56455/",
+      "status": "failed",
+      "fetchedAt": "2026-10-29T20:41:32.941Z"
+    },
+    "https://pmc.ncbi.nlm.nih.gov/articles/PMC2919680": {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2919680",
+      "title": "Adequacy of authors' replies to criticism raised in electronic letters to the editor: cohort study",
+      "description": "Gøtzsche PC, Delamothe T, Godlee F et al. · BMJ",
+      "siteName": "PubMed Central",
+      "status": "ok",
+      "fetchedAt": "2026-10-29T20:41:32.573Z"
+    },
+    "https://pmc.ncbi.nlm.nih.gov/articles/PMC4630891": {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4630891",
+      "title": "Use and mis-use of supplementary material in science publications",
+      "description": "Pop M, Salzberg SL · BMC Bioinformatics",
+      "siteName": "PubMed Central",
+      "status": "ok",
+      "fetchedAt": "2026-10-29T20:41:33.747Z"
+    },
+    "https://pmc.ncbi.nlm.nih.gov/articles/PMC6157527": {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6157527",
+      "title": "Role of supplementary material in biomedical journal articles: surveys of authors, reviewers and readers",
+      "description": "Price A, Schroter S, Clarke M et al. · BMJ Open",
+      "siteName": "PubMed Central",
+      "status": "ok",
+      "fetchedAt": "2026-10-29T20:41:33.585Z"
+    },
+    "https://www.kialo-edu.com/": {
+      "url": "https://www.kialo-edu.com/",
+      "title": "Kialo Edu: The free tool for thoughtful, inclusive class discussion",
+      "description": "The free tool for more productive class discussions and debates. Increase participation and promote critical thinking while hearing from everyone, instantly.",
+      "image": "https://www.kialo-edu.com/images/cms/sites/2/2024/07/17091026/KialoEdu-OpenGraph-Generic.png",
+      "siteName": "Kialo",
+      "status": "ok",
+      "fetchedAt": "2026-10-29T19:01:33.360Z"
+    },
+    "https://www.sciencedirect.com/science/article/abs/pii/S0747563208001258": {
+      "url": "https://www.sciencedirect.com/science/article/abs/pii/S0747563208001258",
+      "status": "failed",
+      "fetchedAt": "2026-10-29T20:41:33.026Z"
+    },
+    "https://www.sciencedirect.com/science/article/pii/S0001691823000124": {
+      "url": "https://www.sciencedirect.com/science/article/pii/S0001691823000124",
+      "status": "failed",
+      "fetchedAt": "2026-10-29T20:41:32.752Z"
+    },
+    "https://www.semanticscholar.org/paper/200304b3639d5ac8382419099efda8a22b822bd1": {
+      "url": "https://www.semanticscholar.org/paper/200304b3639d5ac8382419099efda8a22b822bd1",
+      "status": "failed",
+      "fetchedAt": "2026-10-29T20:41:32.599Z"
+    },
     "https://www.youtube.com/watch?v=vNDYUlxNIAA": {
       "url": "https://www.youtube.com/watch?v=vNDYUlxNIAA",
       "title": "This tool will help improve your critical thinking - Erick Wilberding",
@@ -9,6 +98,15 @@
       "siteName": "YouTube",
       "status": "ok",
       "fetchedAt": "2026-10-19T19:56:09.032Z"
+    },
+    "https://zettelkasten.de/introduction/": {
+      "url": "https://zettelkasten.de/introduction/",
+      "title": "Introduction to the Zettelkasten Method",
+      "description": "Learn how the Zettelkasten works as a system, what a Zettel is made of, and how to grow an organic web of knowledge.",
+      "image": "https://zettelkasten.de/introduction/complete-zettel.png",
+      "siteName": "Zettelkasten Method",
+      "status": "ok",
+      "fetchedAt": "2026-10-29T20:17:00.840Z"
     }
   }
 }

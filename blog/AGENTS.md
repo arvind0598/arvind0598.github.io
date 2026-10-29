@@ -12,6 +12,7 @@ Notes live in `./blog`, one idea per Markdown file. They publish under `/blog/<f
 ---
 because: publish        # or "post" for an entry point; notes without it stay private
 title: "Heat taxes focus"
+summary: "Hot rooms quietly cost everyone accuracy."   # optional one-liner for lists; default: start of the body
 date: 2026-10-18        # posts: needed for ordering
 ---
 One short idea, in a few sentences. Plain [[links]] to other notes are fine.

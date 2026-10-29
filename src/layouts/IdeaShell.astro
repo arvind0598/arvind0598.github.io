@@ -167,11 +167,15 @@ const { title, heading = title, viewAttrs } = Astro.props;
     .bc-map .bc-legend {
       bottom: max(20px, env(safe-area-inset-bottom));
     }
+    /* Status at the bottom centre, between the legend and the zoom buttons:
+       at the top it ran into a long trail bar. */
     .bc-map .bc-corner {
-      top: 12px;
-      right: 12px;
-      bottom: auto;
-      left: auto;
+      top: auto;
+      right: auto;
+      bottom: max(20px, env(safe-area-inset-bottom));
+      left: 50%;
+      max-width: calc(100% - 360px);
+      transform: translateX(-50%);
     }
     /* With the sidebar open the map is too narrow for the status beside the trail. */
     [data-because-view="article"] .bc-map .bc-status {
