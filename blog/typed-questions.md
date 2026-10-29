@@ -11,3 +11,9 @@ Each kind of question is a different way of pressing on a claim: narrowing a ter
 It also keeps the author honest. A question with no answer is visible as a gap, and a note that never draws any questions probably says too little to be worth publishing.
 
 [This](https://www.youtube.com/watch?v=vNDYUlxNIAA) is a cool video about this topic that I like.
+
+> [!evidence]
+> [[questioning-aids-understanding]]
+
+> [!whynot]
+> [[why-not-free-form-links]]

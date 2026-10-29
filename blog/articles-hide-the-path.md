@@ -4,8 +4,11 @@ title: Articles hide the path
 date: 2026-10-19
 ---
 
-One of the main benefits of the long-form article is that it presents conclusions in a tidy order. Dead-ends and objections get edited out so that the reader gets the result without the roundabout route that the author takes to get there.
+A long-form article gives you conclusions in a clean order. The dead ends and objections are edited out. You get the result, not the messy route the author took to reach it.
 
-A reader can still question any step the article states. What they cannot see is everything that was left out: whether the author already considered the objection they are forming, what evidence a claim rests on, or which term was quietly assumed. If the article doesn't address their objection, they can't tell whether it was answered and cut, or never thought of.
+You can still question any step the article states. What you can’t see is what was left out. Did the author already think of your objection? What evidence does the claim rest on? Which term was quietly assumed? If the article doesn’t address your objection, you can’t tell whether it was answered and cut, or never thought up at all.
 
-Writing the article also costs the author something. The connections between ideas, the order in which they were worked out and the reasons for discarding alternatives mostly stay in the author's head, and are lost once the piece is polished.
+It costs the author too. How the ideas connect, the order they were worked out in, why alternatives were dropped: most of this stays in their head. Once the piece is polished, it’s gone.
+
+> [!whynot] Don't footnotes and appendices already do this?
+> [[footnotes-go-unread]]

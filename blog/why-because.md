@@ -1,6 +1,7 @@
 ---
 because: post
 title: Why Because
+summary: A way of publishing in short ideas, each one answering a question that another idea raises.
 date: 2026-10-19
 ---
 
